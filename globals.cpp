@@ -8,4 +8,5 @@ void SwitchGameState(GameState* gamestate)
 	delete gs;
 	gs = nullptr;
 	gs = gamestate;
+	gs->Init();
 }

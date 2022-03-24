@@ -126,6 +126,9 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>raylib.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy /y /E /H /I $(ProjectDir)data  $(OutDir)data</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -143,8 +146,12 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>raylib.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy /y /E /H /I $(ProjectDir)data  $(OutDir)data</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AlsoStartGameState.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="globals.cpp" />
     <ClCompile Include="Logger.cpp" />
@@ -152,10 +159,20 @@
     <ClCompile Include="StartGameState.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AlsoStartGameState.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="globals.h" />
     <ClInclude Include="Logger.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="StartGameState.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="ultrashooter.rc">
+      <FileType>RES</FileType>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="icon1.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

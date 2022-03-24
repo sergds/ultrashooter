@@ -16,7 +16,7 @@ int WinMain(int argc, void* argv[]) {
 		BeginDrawing();
 		if (gs == nullptr) {
 			ClearBackground(BLACK);
-			DrawText("Loading...", 20, 560, 20, WHITE);
+			DrawText("Loading...", 0, 0, 20, WHITE);
 		}
 		if (gs != nullptr)
 			gs->Think();
