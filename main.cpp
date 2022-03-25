@@ -6,13 +6,18 @@
 #include "GameState.h"
 #include "StartGameState.h"
 
-int WinMain(int argc, void* argv[]) {
+int WinMain(int argc,void* argv[]) {
+	if (!DirectoryExists("data")) {
+		logger.Log("Error! Game Data Not Found!");
+		return 1;
+	}
 	InitWindow(800, 600, "Ultra Shooter!");
 	logger.Log("=========== New Log ==============");
 	SetTargetFPS(60);
+	logger.Log(buildinfo);
 	logger.Log("Loading Ultra Shooter!");
 	// Если состояние игры не задано, то поставить Начальное
-	while (!WindowShouldClose()) {
+	while (!WindowShouldClose() && IsWindowReady()) {
 		BeginDrawing();
 		if (gs == nullptr) {
 			ClearBackground(BLACK);

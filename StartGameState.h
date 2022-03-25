@@ -1,11 +1,11 @@
 #pragma once
 #include "GameState.h"
+#include "globals.h"
 // Начальное состояние (заставка).
 class StartGameState :
     public GameState
 {
 private:
-    Font ocra;
     Color col;
     bool m_binitialized = false;
 public:

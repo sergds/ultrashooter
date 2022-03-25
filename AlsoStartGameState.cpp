@@ -1,19 +1,36 @@
 #include "AlsoStartGameState.h"
+#include "MainMenuGameState.h"
 
 void AlsoStartGameState::Init()
 {
 	logger.Log("Initialized AlsoStartGameState!");
+	madeby = LoadTexture("data/fonts/prebaked/prebaked_madeby.png");
 }
 
 void AlsoStartGameState::Think()
 {
 	ClearBackground(BLACK);
 	Vector2 pos{ 0,0 };
-	DrawTextEx(GetFontDefault(), "Made by SergDS", CLITERAL(Vector2) { 280, 280 }, 40, 1, WHITE);
+	//DrawTextEx(DefaultFont, "Сделал SergDS", CLITERAL(Vector2) { 280, 280 }, 40, 1, WHITE);
+	//DrawTexture(DefaultFont.texture, 0, 0, WHITE);
+	DrawTexture(madeby, (GetRenderWidth() / 2) - madeby.width / 2, (GetRenderHeight() / 2) - madeby.height, MAROON);
+	if (m_tics == 200) {
+		//DrawTextEx(DefaultFont, "Для более весёлых уроков инфы!", CLITERAL(Vector2) { 100, (10 * (float)sin(GetTime() * 2) + 320) }, 40, 1, WHITE);
+		//int count = 0;
+		//int* codepoints = LoadCodepoints("Для более весёлых уроков инфы!", &count);
+		//DrawTextCodepoints(DefaultFont, codepoints, count, CLITERAL(Vector2) { 100, (10 * (float)sin(GetTime() * 2) + 320) }, 40, 1, WHITE);
+		madeby = LoadTexture("data/fonts/prebaked/prebaked_madeby2.png");
+		
+	}
+	if (m_tics == 600) {
+		SwitchGameState(new MainMenuGameState);
+	}
+	++m_tics;
 }
 
 void AlsoStartGameState::Destroy()
 {
+	UnloadTexture(madeby);
 }
 
 AlsoStartGameState::AlsoStartGameState()
