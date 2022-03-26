@@ -14,6 +14,7 @@ void AlsoStartGameState::Think()
 	//DrawTextEx(DefaultFont, "Сделал SergDS", CLITERAL(Vector2) { 280, 280 }, 40, 1, WHITE);
 	//DrawTexture(DefaultFont.texture, 0, 0, WHITE);
 	DrawTexture(madeby, (GetRenderWidth() / 2) - madeby.width / 2, (GetRenderHeight() / 2) - madeby.height, MAROON);
+	DrawTextEx(DefaultFont, "hold any key or LMB to skip", CLITERAL(Vector2){ ((float)GetRenderWidth() / 2) - 150, ((float)GetRenderHeight() / 2) + 100 }, 30, 1, CLITERAL(Color){100,100,100,255});
 	if (m_tics == 200) {
 		//DrawTextEx(DefaultFont, "Для более весёлых уроков инфы!", CLITERAL(Vector2) { 100, (10 * (float)sin(GetTime() * 2) + 320) }, 40, 1, WHITE);
 		//int count = 0;
@@ -22,8 +23,13 @@ void AlsoStartGameState::Think()
 		madeby = LoadTexture("data/fonts/prebaked/prebaked_madeby2.png");
 		
 	}
-	if (m_tics == 600) {
+	if (m_tics >= 600) {
 		SwitchGameState(new MainMenuGameState);
+	}
+	if (GetKeyPressed() != 0 || IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
+		if(m_tics <= 200)
+			madeby = LoadTexture("data/fonts/prebaked/prebaked_madeby2.png");
+		m_tics += 200;
 	}
 	++m_tics;
 }

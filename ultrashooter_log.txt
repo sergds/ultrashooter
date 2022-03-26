@@ -1,0 +1,603 @@
+=========== New Log ==============
+Ultra Shooter v1.0 build: Mar 26 2022 18:32:02
+Loading Ultra Shooter!
+Initialized StartGameState!
+===== Game Init stage 2! =====
+===== Checking game data presence =====
+Data is fine.
+Initialized Audio!
+Initialized Fonts!
+Initialized AlsoStartGameState!
+Entering Main Menu!
+=========== End of Log ==============
+=========== New Log ==============
+Ultra Shooter v1.0 build: Mar 26 2022 18:32:02
+Loading Ultra Shooter!
+Initialized StartGameState!
+===== Game Init stage 2! =====
+===== Checking game data presence =====
+Data is fine.
+Initialized Audio!
+Initialized Fonts!
+Initialized AlsoStartGameState!
+=========== End of Log ==============
+=========== New Log ==============
+Ultra Shooter v1.0 build: Mar 26 2022 18:32:02
+Loading Ultra Shooter!
+Initialized StartGameState!
+===== Game Init stage 2! =====
+===== Checking game data presence =====
+Data is fine.
+Initialized Audio!
+Initialized Fonts!
+Initialized AlsoStartGameState!
+Entering Main Menu!
+=========== End of Log ==============
+=========== New Log ==============
+Ultra Shooter v1.0 build: Mar 26 2022 18:32:02
+Loading Ultra Shooter!
+Initialized StartGameState!
+===== Game Init stage 2! =====
+===== Checking game data presence =====
+Data is fine.
+Initialized Audio!
+Initialized Fonts!
+Initialized AlsoStartGameState!
+Entering Main Menu!
+=========== New Log ==============
+Ultra Shooter v1.0 build: Mar 26 2022 18:32:02
+Loading Ultra Shooter!
+Initialized StartGameState!
+===== Game Init stage 2! =====
+===== Checking game data presence =====
+Data is fine.
+Initialized Audio!
+Initialized Fonts!
+Initialized AlsoStartGameState!
+=========== End of Log ==============
+=========== New Log ==============
+Ultra Shooter v1.0 build: Mar 26 2022 18:32:02
+Loading Ultra Shooter!
+Initialized StartGameState!
+===== Game Init stage 2! =====
+===== Checking game data presence =====
+Data is fine.
+Initialized Audio!
+Initialized Fonts!
+Initialized AlsoStartGameState!
+Entering Main Menu!
+=========== End of Log ==============
+=========== New Log ==============
+Ultra Shooter v1.0 build: Mar 26 2022 18:32:02
+Loading Ultra Shooter!
+Initialized StartGameState!
+===== Game Init stage 2! =====
+===== Checking game data presence =====
+Data is fine.
+Initialized Audio!
+Initialized Fonts!
+Initialized AlsoStartGameState!
+Entering Main Menu!
+=========== End of Log ==============
+=========== New Log ==============
+Ultra Shooter v1.0 build: Mar 26 2022 18:44:13
+Loading Ultra Shooter!
+Initialized StartGameState!
+===== Game Init stage 2! =====
+===== Checking game data presence =====
+Data is fine.
+Initialized Audio!
+Initialized Fonts!
+Initialized AlsoStartGameState!
+Entering Main Menu!
+=========== End of Log ==============
+=========== New Log ==============
+Ultra Shooter v1.0 build: Mar 26 2022 18:44:13
+Loading Ultra Shooter!
+Initialized StartGameState!
+===== Game Init stage 2! =====
+===== Checking game data presence =====
+Data is fine.
+Initialized Audio!
+Initialized Fonts!
+Initialized AlsoStartGameState!
+Entering Main Menu!
+=========== End of Log ==============
+=========== New Log ==============
+Ultra Shooter v1.0 build: Mar 26 2022 18:44:13
+Loading Ultra Shooter!
+Initialized StartGameState!
+===== Game Init stage 2! =====
+===== Checking game data presence =====
+Data is fine.
+Initialized Audio!
+Initialized Fonts!
+Initialized AlsoStartGameState!
+Entering Main Menu!
+=========== End of Log ==============
+=========== New Log ==============
+Ultra Shooter v1.0 build: Mar 26 2022 18:44:13
+Loading Ultra Shooter!
+Initialized StartGameState!
+===== Game Init stage 2! =====
+===== Checking game data presence =====
+Data is fine.
+Initialized Audio!
+Initialized Fonts!
+Initialized AlsoStartGameState!
+Entering Main Menu!
+=========== End of Log ==============
+=========== New Log ==============
+Ultra Shooter v1.0 build: Mar 26 2022 18:44:13
+Loading Ultra Shooter!
+Initialized StartGameState!
+===== Game Init stage 2! =====
+===== Checking game data presence =====
+Data is fine.
+Initialized Audio!
+Initialized Fonts!
+Initialized AlsoStartGameState!
+=========== End of Log ==============
+=========== New Log ==============
+Ultra Shooter v1.0 build: Mar 26 2022 18:44:13
+Loading Ultra Shooter!
+Initialized StartGameState!
+===== Game Init stage 2! =====
+===== Checking game data presence =====
+Data is fine.
+Initialized Audio!
+Initialized Fonts!
+Initialized AlsoStartGameState!
+=========== End of Log ==============
+=========== New Log ==============
+Ultra Shooter v1.0 build: Mar 26 2022 18:44:13
+Loading Ultra Shooter!
+Initialized StartGameState!
+===== Game Init stage 2! =====
+===== Checking game data presence =====
+Data is fine.
+Initialized Audio!
+Initialized Fonts!
+Initialized AlsoStartGameState!
+Entering Main Menu!
+=========== End of Log ==============
+=========== New Log ==============
+Ultra Shooter v1.0 build: Mar 26 2022 18:44:13
+Loading Ultra Shooter!
+Initialized StartGameState!
+===== Game Init stage 2! =====
+===== Checking game data presence =====
+Data is fine.
+Initialized Audio!
+Initialized Fonts!
+Initialized AlsoStartGameState!
+Entering Main Menu!
+=========== End of Log ==============
+=========== New Log ==============
+Ultra Shooter v1.0 build: Mar 26 2022 18:44:13
+Loading Ultra Shooter!
+Initialized StartGameState!
+===== Game Init stage 2! =====
+===== Checking game data presence =====
+Data is fine.
+Initialized Audio!
+Initialized Fonts!
+Initialized AlsoStartGameState!
+Entering Main Menu!
+=========== End of Log ==============
+=========== New Log ==============
+Ultra Shooter v1.0 build: Mar 26 2022 18:44:13
+Loading Ultra Shooter!
+Initialized StartGameState!
+===== Game Init stage 2! =====
+===== Checking game data presence =====
+Data is fine.
+Initialized Audio!
+Initialized Fonts!
+Initialized AlsoStartGameState!
+Entering Main Menu!
+=========== End of Log ==============
+=========== New Log ==============
+Ultra Shooter v1.0 build: Mar 26 2022 18:44:13
+Loading Ultra Shooter!
+Initialized StartGameState!
+===== Game Init stage 2! =====
+===== Checking game data presence =====
+Data is fine.
+Initialized Audio!
+Initialized Fonts!
+Initialized AlsoStartGameState!
+Entering Main Menu!
+=========== End of Log ==============
+=========== New Log ==============
+Ultra Shooter v1.0 build: Mar 26 2022 18:44:13
+Loading Ultra Shooter!
+Initialized StartGameState!
+===== Game Init stage 2! =====
+===== Checking game data presence =====
+Data is fine.
+Initialized Audio!
+Initialized Fonts!
+Initialized AlsoStartGameState!
+Entering Main Menu!
+=========== End of Log ==============
+=========== New Log ==============
+Ultra Shooter v1.0 build: Mar 26 2022 18:44:13
+Loading Ultra Shooter!
+Initialized StartGameState!
+===== Game Init stage 2! =====
+===== Checking game data presence =====
+Data is fine.
+Initialized Audio!
+Initialized Fonts!
+Initialized AlsoStartGameState!
+Entering Main Menu!
+=========== End of Log ==============
+=========== New Log ==============
+Ultra Shooter v1.0 build: Mar 26 2022 18:44:13
+Loading Ultra Shooter!
+Initialized StartGameState!
+===== Game Init stage 2! =====
+===== Checking game data presence =====
+Data is fine.
+Initialized Audio!
+Initialized Fonts!
+Initialized AlsoStartGameState!
+Entering Main Menu!
+=========== End of Log ==============
+=========== New Log ==============
+Ultra Shooter v1.0 build: Mar 26 2022 18:44:13
+Loading Ultra Shooter!
+Initialized StartGameState!
+===== Game Init stage 2! =====
+===== Checking game data presence =====
+Data is fine.
+Initialized Audio!
+Initialized Fonts!
+Initialized AlsoStartGameState!
+Entering Main Menu!
+=========== End of Log ==============
+=========== New Log ==============
+Ultra Shooter v1.0 build: Mar 26 2022 18:44:13
+Loading Ultra Shooter!
+Initialized StartGameState!
+===== Game Init stage 2! =====
+===== Checking game data presence =====
+Data is fine.
+Initialized Audio!
+Initialized Fonts!
+Initialized AlsoStartGameState!
+Entering Main Menu!
+=========== End of Log ==============
+=========== New Log ==============
+Ultra Shooter v1.0 build: Mar 26 2022 18:44:13
+Loading Ultra Shooter!
+Initialized StartGameState!
+===== Game Init stage 2! =====
+===== Checking game data presence =====
+Data is fine.
+Initialized Audio!
+Initialized Fonts!
+=========== End of Log ==============
+=========== New Log ==============
+Ultra Shooter v1.0 build: Mar 26 2022 18:44:13
+Loading Ultra Shooter!
+Initialized StartGameState!
+===== Game Init stage 2! =====
+===== Checking game data presence =====
+Data is fine.
+Initialized Audio!
+Initialized Fonts!
+Initialized AlsoStartGameState!
+Entering Main Menu!
+=========== End of Log ==============
+=========== New Log ==============
+Ultra Shooter v1.0 build: Mar 26 2022 18:44:13
+Loading Ultra Shooter!
+Initialized StartGameState!
+===== Game Init stage 2! =====
+===== Checking game data presence =====
+Data is fine.
+Initialized Audio!
+Initialized Fonts!
+Initialized AlsoStartGameState!
+Entering Main Menu!
+=========== End of Log ==============
+=========== New Log ==============
+Ultra Shooter v1.0 build: Mar 26 2022 18:44:13
+Loading Ultra Shooter!
+Initialized StartGameState!
+===== Game Init stage 2! =====
+===== Checking game data presence =====
+Data is fine.
+Initialized Audio!
+Initialized Fonts!
+Initialized AlsoStartGameState!
+Entering Main Menu!
+=========== End of Log ==============
+=========== New Log ==============
+Ultra Shooter v1.0 build: Mar 26 2022 18:44:13
+Loading Ultra Shooter!
+Initialized StartGameState!
+===== Game Init stage 2! =====
+===== Checking game data presence =====
+Data is fine.
+Initialized Audio!
+Initialized Fonts!
+Initialized AlsoStartGameState!
+Entering Main Menu!
+=========== End of Log ==============
+=========== New Log ==============
+Ultra Shooter v1.0 build: Mar 26 2022 18:44:13
+Loading Ultra Shooter!
+Initialized StartGameState!
+===== Game Init stage 2! =====
+===== Checking game data presence =====
+Data is fine.
+Initialized Audio!
+Initialized Fonts!
+Initialized AlsoStartGameState!
+Entering Main Menu!
+=========== End of Log ==============
+=========== New Log ==============
+Ultra Shooter v1.0 build: Mar 26 2022 18:44:13
+Loading Ultra Shooter!
+Initialized StartGameState!
+===== Game Init stage 2! =====
+===== Checking game data presence =====
+Data is fine.
+Initialized Audio!
+Initialized Fonts!
+Initialized AlsoStartGameState!
+Entering Main Menu!
+=========== End of Log ==============
+=========== New Log ==============
+Ultra Shooter v1.0 build: Mar 26 2022 18:44:13
+Loading Ultra Shooter!
+Initialized StartGameState!
+===== Game Init stage 2! =====
+===== Checking game data presence =====
+Data is fine.
+Initialized Audio!
+Initialized Fonts!
+Initialized AlsoStartGameState!
+Entering Main Menu!
+=========== End of Log ==============
+=========== New Log ==============
+Ultra Shooter v1.0 build: Mar 26 2022 18:44:13
+Loading Ultra Shooter!
+Initialized StartGameState!
+===== Game Init stage 2! =====
+===== Checking game data presence =====
+Data is fine.
+Initialized Audio!
+Initialized Fonts!
+Initialized AlsoStartGameState!
+Entering Main Menu!
+=========== End of Log ==============
+=========== New Log ==============
+Ultra Shooter v1.0 build: Mar 26 2022 18:44:13
+Loading Ultra Shooter!
+Initialized StartGameState!
+===== Game Init stage 2! =====
+===== Checking game data presence =====
+Data is fine.
+Initialized Audio!
+Initialized Fonts!
+Initialized AlsoStartGameState!
+Entering Main Menu!
+=========== End of Log ==============
+=========== New Log ==============
+Ultra Shooter v1.0 build: Mar 26 2022 18:44:13
+Loading Ultra Shooter!
+Initialized StartGameState!
+===== Game Init stage 2! =====
+===== Checking game data presence =====
+Data is fine.
+Initialized Audio!
+Initialized Fonts!
+Initialized AlsoStartGameState!
+Entering Main Menu!
+=========== End of Log ==============
+=========== New Log ==============
+Ultra Shooter v1.0 build: Mar 26 2022 18:44:13
+Loading Ultra Shooter!
+Initialized StartGameState!
+===== Game Init stage 2! =====
+===== Checking game data presence =====
+Data is fine.
+Initialized Audio!
+Initialized Fonts!
+Initialized AlsoStartGameState!
+Entering Main Menu!
+=========== End of Log ==============
+=========== New Log ==============
+Ultra Shooter v1.0 build: Mar 26 2022 18:44:13
+Loading Ultra Shooter!
+Initialized StartGameState!
+===== Game Init stage 2! =====
+===== Checking game data presence =====
+Data is fine.
+Initialized Audio!
+Initialized Fonts!
+Initialized AlsoStartGameState!
+Entering Main Menu!
+=========== End of Log ==============
+=========== New Log ==============
+Ultra Shooter v1.0 build: Mar 26 2022 18:44:13
+Loading Ultra Shooter!
+Initialized StartGameState!
+===== Game Init stage 2! =====
+===== Checking game data presence =====
+Data is fine.
+Initialized Audio!
+Initialized Fonts!
+Initialized AlsoStartGameState!
+Entering Main Menu!
+=========== End of Log ==============
+=========== New Log ==============
+Ultra Shooter v1.0 build: Mar 26 2022 18:44:13
+Loading Ultra Shooter!
+Initialized StartGameState!
+===== Game Init stage 2! =====
+===== Checking game data presence =====
+Data is fine.
+Initialized Audio!
+Initialized Fonts!
+Initialized AlsoStartGameState!
+Entering Main Menu!
+=========== End of Log ==============
+=========== New Log ==============
+Ultra Shooter v1.0 build: Mar 26 2022 18:44:13
+Loading Ultra Shooter!
+Initialized StartGameState!
+===== Game Init stage 2! =====
+===== Checking game data presence =====
+Data is fine.
+Initialized Audio!
+Initialized Fonts!
+=========== End of Log ==============
+=========== New Log ==============
+Ultra Shooter v1.0 build: Mar 26 2022 18:44:13
+Loading Ultra Shooter!
+Initialized StartGameState!
+===== Game Init stage 2! =====
+===== Checking game data presence =====
+Data is fine.
+Initialized Audio!
+Initialized Fonts!
+Initialized AlsoStartGameState!
+Entering Main Menu!
+=========== End of Log ==============
+=========== New Log ==============
+Ultra Shooter v1.0 build: Mar 26 2022 18:44:13
+Loading Ultra Shooter!
+Initialized StartGameState!
+===== Game Init stage 2! =====
+===== Checking game data presence =====
+Data is fine.
+Initialized Audio!
+Initialized Fonts!
+Initialized AlsoStartGameState!
+Entering Main Menu!
+=========== End of Log ==============
+=========== New Log ==============
+Ultra Shooter v1.0 build: Mar 26 2022 18:44:13
+Loading Ultra Shooter!
+Initialized StartGameState!
+===== Game Init stage 2! =====
+===== Checking game data presence =====
+Data is fine.
+Initialized Audio!
+Initialized Fonts!
+Initialized AlsoStartGameState!
+Entering Main Menu!
+=========== End of Log ==============
+=========== New Log ==============
+Ultra Shooter v1.0 build: Mar 26 2022 18:44:13
+Loading Ultra Shooter!
+Initialized StartGameState!
+===== Game Init stage 2! =====
+===== Checking game data presence =====
+Data is fine.
+Initialized Audio!
+Initialized Fonts!
+Initialized AlsoStartGameState!
+Entering Main Menu!
+=========== End of Log ==============
+=========== New Log ==============
+Ultra Shooter v1.0 build: Mar 26 2022 18:44:13
+Loading Ultra Shooter!
+Initialized StartGameState!
+===== Game Init stage 2! =====
+===== Checking game data presence =====
+Data is fine.
+Initialized Audio!
+Initialized Fonts!
+Initialized AlsoStartGameState!
+Entering Main Menu!
+=========== End of Log ==============
+=========== New Log ==============
+Ultra Shooter v1.0 build: Mar 26 2022 18:44:13
+Loading Ultra Shooter!
+Initialized StartGameState!
+===== Game Init stage 2! =====
+===== Checking game data presence =====
+Data is fine.
+Initialized Audio!
+Initialized Fonts!
+Initialized AlsoStartGameState!
+Entering Main Menu!
+=========== End of Log ==============
+=========== New Log ==============
+Ultra Shooter v1.0 build: Mar 26 2022 18:44:13
+Loading Ultra Shooter!
+Initialized StartGameState!
+===== Game Init stage 2! =====
+===== Checking game data presence =====
+Data is fine.
+Initialized Audio!
+Initialized Fonts!
+Initialized AlsoStartGameState!
+Entering Main Menu!
+=========== End of Log ==============
+=========== New Log ==============
+Ultra Shooter v1.0 build: Mar 26 2022 18:44:13
+Loading Ultra Shooter!
+Initialized StartGameState!
+===== Game Init stage 2! =====
+===== Checking game data presence =====
+Data is fine.
+Initialized Audio!
+Initialized Fonts!
+Initialized AlsoStartGameState!
+Entering Main Menu!
+=========== End of Log ==============
+=========== New Log ==============
+Ultra Shooter v1.0 build: Mar 26 2022 18:44:13
+Loading Ultra Shooter!
+Initialized StartGameState!
+===== Game Init stage 2! =====
+===== Checking game data presence =====
+Data is fine.
+Initialized Audio!
+Initialized Fonts!
+Initialized AlsoStartGameState!
+Entering Main Menu!
+=========== End of Log ==============
+=========== New Log ==============
+Ultra Shooter v1.0 build: Mar 26 2022 18:44:13
+Loading Ultra Shooter!
+Initialized StartGameState!
+===== Game Init stage 2! =====
+===== Checking game data presence =====
+Data is fine.
+Initialized Audio!
+Initialized Fonts!
+Initialized AlsoStartGameState!
+Entering Main Menu!
+=========== End of Log ==============
+=========== New Log ==============
+Ultra Shooter v1.0 build: Mar 26 2022 18:44:13
+Loading Ultra Shooter!
+Initialized StartGameState!
+===== Game Init stage 2! =====
+===== Checking game data presence =====
+Data is fine.
+Initialized Audio!
+Initialized Fonts!
+Initialized AlsoStartGameState!
+Entering Main Menu!
+=========== End of Log ==============
+=========== New Log ==============
+Ultra Shooter v1.0 build: Mar 26 2022 18:44:13
+Loading Ultra Shooter!
+Initialized StartGameState!
+===== Game Init stage 2! =====
+===== Checking game data presence =====
+Data is fine.
+Initialized Audio!
+Initialized Fonts!
+Initialized AlsoStartGameState!
+Entering Main Menu!
+=========== End of Log ==============

@@ -28,6 +28,10 @@ void MainMenuGameState::Think()
 void MainMenuGameState::Destroy()
 {
 	StopMusicStream(menu_music);
+	UnloadMusicStream(menu_music);
+	UnloadTexture(bg);
+	UnloadTexture(enter);
+	UnloadTexture(logo);
 }
 
 MainMenuGameState::MainMenuGameState()

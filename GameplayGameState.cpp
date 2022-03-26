@@ -2,11 +2,17 @@
 
 void GameplayGameState::Init()
 {
+	bg = LoadTexture("data/sprites/battlefield.png");
 }
 
 void GameplayGameState::Think()
 {
-	ClearBackground(CLITERAL(Color){200,0,0,255});
+	DrawTexture(bg, 0, 0, WHITE);
+	player.Think();
+	testenemy.Think();
+
+	DrawTextEx(DefaultFont, TextFormat("Score: %i", score), CLITERAL(Vector2){0, 25}, 25, 1, WHITE);
+	DrawTextEx(DefaultFont, TextFormat("Lost: %i", prosrano), CLITERAL(Vector2){0, 55}, 25, 1, WHITE);
 }
 
 void GameplayGameState::Destroy()

@@ -151,22 +151,30 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Actor.cpp" />
     <ClCompile Include="AlsoStartGameState.cpp" />
+    <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="GameplayGameState.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="globals.cpp" />
     <ClCompile Include="Logger.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainMenuGameState.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="StartGameState.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Actor.h" />
     <ClInclude Include="AlsoStartGameState.h" />
+    <ClInclude Include="Bullet.h" />
+    <ClInclude Include="Enemy.h" />
     <ClInclude Include="GameplayGameState.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="globals.h" />
     <ClInclude Include="Logger.h" />
     <ClInclude Include="MainMenuGameState.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="StartGameState.h" />
   </ItemGroup>
