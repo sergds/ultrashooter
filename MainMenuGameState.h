@@ -1,5 +1,6 @@
 #pragma once
 #include "GameState.h"
+#include <cmath>
 class MainMenuGameState :
     public GameState
 {

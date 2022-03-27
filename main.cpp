@@ -6,7 +6,8 @@
 #include "GameState.h"
 #include "StartGameState.h"
 
-int WinMain(int argc,void* argv[]) {
+
+int WinMain(int argc,char* argv[]) {
 	if (!DirectoryExists("data")) {
 		logger.Log("Error! Game Data Not Found!");
 		return 1;
@@ -34,4 +35,8 @@ int WinMain(int argc,void* argv[]) {
 	}
 	logger.Log("=========== End of Log ==============");
 	return 0;
+}
+
+int main(int argc,char* argv[]) {
+	WinMain(argc,argv);
 }

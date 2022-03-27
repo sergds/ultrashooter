@@ -361,3 +361,9 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+ultrashooter.html
+ultrashooter.apk
+ultrashooter.js
+ultrashooter.wasm
+ultrashooter.data
