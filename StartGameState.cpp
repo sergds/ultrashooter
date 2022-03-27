@@ -22,6 +22,11 @@ void StartGameState::Init()
 	//DefaultFont = LoadFontEx("data/LiberationSans-Regular.ttf", 50, codepoints, chars);
 	DefaultFont = LoadFont("data/fonts/defaultfont.fnt");
 	logger.Log("Initialized Fonts!");
+	bullet = LoadTexture("data/sprites/bullet.png");
+	Image tmp = LoadImageFromTexture(bullet);
+	ImageResize(&tmp, tmp.width / 2, tmp.height / 2);
+	bullet = LoadTextureFromImage(tmp);
+	UnloadImage(tmp);
 	Sound tink = LoadSound("data/tink.wav");
 	PlaySound(tink);
 	Color color{ 0,255,0,255 };

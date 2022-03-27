@@ -9,8 +9,6 @@ class GameplayGameState :
 {
 private:
     Texture bg;
-    Player player;
-    Enemy testenemy;
     int score = 0;
     int prosrano = 0;
 public:

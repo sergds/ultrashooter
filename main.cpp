@@ -12,6 +12,7 @@ int WinMain(int argc,void* argv[]) {
 		return 1;
 	}
 	InitWindow(800, 600, "Ultra Shooter!");
+	//ToggleFullscreen();
 	logger.Log("=========== New Log ==============");
 	SetTargetFPS(60);
 	logger.Log(buildinfo);

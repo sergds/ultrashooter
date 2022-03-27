@@ -9,10 +9,16 @@ private:
 	float m_rotdeg = 0; //Rotation in Degrees
 	Texture m_sprite;
 	Texture m_sprite2;
+	int m_tics = 0;
+	bool m_talk = false;
+	std::string m_name = "Enemy";
 public:
-	std::string name = "Player";
 	Enemy();
 	~Enemy();
+	Vector2 GetPosition();
+	Vector2 GetOrigin();
+	std::string GetName();
+	float GetRotation();
 	void Think();
 };
 

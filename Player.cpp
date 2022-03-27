@@ -1,7 +1,10 @@
 #include "Player.h"
+#include "Bullet.h"
+#include "globals.h"
 
 Player::Player()
 {
+	shot = LoadSound("data/shot.wav");
 	m_sprite = LoadTexture("data/sprites/stalin.png");
 	m_sprite2 = LoadTexture("data/sprites/stalin_grin.png");
 	Image tmp = LoadImageFromTexture(m_sprite);
@@ -20,6 +23,27 @@ Player::~Player()
 {
 	UnloadTexture(m_sprite);
 	UnloadTexture(m_sprite2);
+	UnloadSound(shot);
+}
+
+Vector2 Player::GetPosition()
+{
+	return m_pos;
+}
+
+Vector2 Player::GetOrigin()
+{
+	return m_origin;
+}
+
+std::string Player::GetName()
+{
+	return m_name;
+}
+
+float Player::GetRotation()
+{
+	return m_rotdeg;
 }
 
 void Player::Think()
@@ -30,14 +54,18 @@ void Player::Think()
 	else {
 		DrawTexture(m_sprite2, m_pos.x - m_origin.x, m_pos.y - m_origin.y, WHITE);
 	}
-	if (IsKeyDown(KEY_RIGHT)) {
+	if (IsKeyDown(KEY_RIGHT) && m_pos.x <= 800 - m_origin.x / 2) {
 		m_pos.x += 400 * GetFrameTime();
 	}
-	if (IsKeyDown(KEY_LEFT)) {
+	if (IsKeyDown(KEY_LEFT) && m_pos.x >= 0 + m_origin.x) {
 		m_pos.x -= 400 * GetFrameTime();
 	}
 	if (IsKeyPressed(KEY_SPACE)) {
+		//Bullet bullet(CLITERAL(Vector2){m_pos.x, m_pos.y - 50});
+		RegisterActor(new Bullet(CLITERAL(Vector2) { m_pos.x, m_pos.y - 50 }));
 		m_grintics = 25;
+		SetSoundPitch(shot, (float)GetRandomValue(70, 90) / 100);
+		PlaySound(shot);
 	}
 	if (m_grintics > 0)
 		--m_grintics;
