@@ -23,6 +23,10 @@ float Actor::GetRotation()
 	return m_rotdeg;
 }
 
+void Actor::Die()
+{
+}
+
 void Actor::Think()
 {
 }

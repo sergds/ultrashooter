@@ -11,11 +11,12 @@ private:
 	std::string m_name = "Unnamed Actor";
 public:
 	Actor();
-	~Actor();
+	virtual ~Actor();
 	virtual Vector2 GetPosition();
 	virtual Vector2 GetOrigin();
 	virtual std::string GetName() = 0;
 	virtual float GetRotation();
+	virtual void Die(); // For Enemy
 	virtual void Think();
 };
 

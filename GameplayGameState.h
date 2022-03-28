@@ -13,7 +13,6 @@ class GameplayGameState :
 {
 private:
     Texture bg;
-    Music music;
     int score = 0;
     int prosrano = 0;
     int m_spawntics = 300;

@@ -23,6 +23,7 @@ public:
 	Vector2 GetOrigin();
 	std::string GetName();
 	float GetRotation();
+	void Die();
 	void Think();
 };
 

@@ -6,14 +6,22 @@
 #include "GameState.h"
 #include "StartGameState.h"
 
+#if defined(PLATFORM_WEB)
+#include <emscripten/emscripten.h>
+#endif
 
 int WinMain(int argc,char* argv[]) {
+#ifndef __ANDROID__ 
 	if (!DirectoryExists("data")) {
 		logger.Log("Error! Game Data Not Found!");
 		return 1;
 	}
+#endif
 	InitWindow(800, 600, "Ultra Shooter!");
-	//ToggleFullscreen();
+	InitAudioDevice();
+#ifdef __ANDROID__ 
+	ToggleFullscreen();
+#endif
 	logger.Log("=========== New Log ==============");
 	SetTargetFPS(60);
 	logger.Log(buildinfo);

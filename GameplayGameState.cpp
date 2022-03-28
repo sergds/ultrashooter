@@ -2,17 +2,18 @@
 
 void GameplayGameState::Init()
 {
-	music = LoadMusicStream("data/sacredwar.ogg");
-	music.looping = true;
+	game_music = LoadMusicStream("data/sacredwar.ogg");
+	game_music.looping = true;
 	bg = LoadTexture("data/sprites/battlefield.png");
 	RegisterActor(new Player());
 	gameplaytimestamp = GetTime();
-	SetMusicVolume(music, 0.5);
-	PlayMusicStream(music);
+	SetMusicVolume(game_music, 0.5);
+	PlayMusicStream(game_music);
 }
 
 void GameplayGameState::Think()
 {
+	UpdateMusicStream(game_music);
 	std::vector<Actor*> hihitlers;
 	std::vector<Actor*> bullets;
 	DrawTexture(bg, 0, 0, WHITE);
@@ -52,6 +53,7 @@ void GameplayGameState::Think()
 			//DrawRectangleRec(bullet_rec, YELLOW);
 			//DrawRectangleRec(hihitler_rec, RED);
 			if (CheckCollisionRecs(bullet_rec, hihitler_rec)) {
+				(*h_it)->Die(); // Only Enemy Has Die()!!
 				DeregisterActor(*b_it);
 				DeregisterActor(*h_it);
 				score += 1;
@@ -84,8 +86,9 @@ void GameplayGameState::Destroy()
 	pending_actors.clear();
 	dereg_pending_actors.clear();
 	globalscore = score;
-	StopMusicStream(music);
-	UnloadMusicStream(music);
+	StopSoundMulti();
+	StopMusicStream(game_music);
+	UnloadMusicStream(game_music);
 	UnloadTexture(bg);
 }
 

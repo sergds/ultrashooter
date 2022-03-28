@@ -1,6 +1,9 @@
 #include "globals.h"
-
-const char* buildinfo = TextFormat("Ultra Shooter v1.0 build: %s %s", __DATE__, __TIME__);
+#ifndef __ANDROID__ 
+const char* buildinfo = TextFormat("Ultra Shooter build: %s %s", __DATE__, __TIME__);
+#else
+const char* buildinfo = TextFormat("Ultra Shooter !ANDROID! build: %s %s", __DATE__, __TIME__);
+#endif
 std::vector<Actor*> actors;
 std::vector<Actor*> pending_actors;
 std::vector<Actor*> dereg_pending_actors;
@@ -8,6 +11,13 @@ double gameplaytimestamp = 0;
 int globalscore = 0;
 Logger logger;
 Music menu_music;
+Music game_music;
+Music endt_music;
+Sound death1;
+Sound death2;
+Sound speak1;
+Sound speak2;
+Sound sc;
 Texture bullet;
 Texture enemy;
 Texture enemy2;
@@ -49,9 +59,11 @@ void ProcessActors() {
 	}
 	if (dereg_pending_actors.size() != 0) {
 		for (auto it = dereg_pending_actors.begin(); it != dereg_pending_actors.end(); it++) {
-			actors.erase(std::remove(actors.begin(), actors.end(),  ( * it)), actors.end());
-			//delete (*it);
-			(*it) = nullptr;
+			if ((*it) != nullptr) {
+				actors.erase(std::remove(actors.begin(), actors.end(), (*it)), actors.end());
+				//delete (*it);
+				(*it) = nullptr;
+			}
 		}
 		dereg_pending_actors.clear();
 	}

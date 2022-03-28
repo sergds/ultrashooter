@@ -33,11 +33,32 @@ float Enemy::GetRotation()
 	return m_rotdeg;
 }
 
+void Enemy::Die()
+{
+	if (GetRandomValue(0, 1) == 0) {
+		PlaySoundMulti(death1);
+	}
+	else {
+		PlaySoundMulti(death2);
+	}
+	if (GetRandomValue(0, 100) >= 90) {
+		PlaySoundMulti(sc);
+	}
+}
+
 void Enemy::Think()
 {
 	if (!(m_tics % 30)) {
 		if (m_talk == false) {
 			m_talk = true;
+			if (GetRandomValue(0, 100) >= 85) {
+				if (GetRandomValue(0, 1) == 0) {
+					PlaySoundMulti(speak2);
+				}
+				else {
+					PlaySoundMulti(speak1);
+				}
+			}
 		}
 		else {
 			m_talk = false;
