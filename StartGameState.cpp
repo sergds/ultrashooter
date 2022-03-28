@@ -23,6 +23,8 @@ void StartGameState::Init()
 	DefaultFont = LoadFont("data/fonts/defaultfont.fnt");
 	logger.Log("Initialized Fonts!");
 	bullet = LoadTexture("data/sprites/bullet.png");
+	enemy = LoadTexture("data/sprites/hihitler.png");
+	enemy2 = LoadTexture("data/sprites/hihitler2.png");
 	Image tmp = LoadImageFromTexture(bullet);
 	ImageResize(&tmp, tmp.width / 2, tmp.height / 2);
 	bullet = LoadTextureFromImage(tmp);

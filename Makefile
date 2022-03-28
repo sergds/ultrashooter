@@ -385,6 +385,7 @@ PROJECT_SOURCE_FILES ?= \
 	MainMenuGameState.cpp \
 	Player.cpp \
 	StartGameState.cpp \
+	EndGameState.cpp
 # Define all object files from source files
 OBJS = $(patsubst %.c, %.o, $(PROJECT_SOURCE_FILES))
 

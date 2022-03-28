@@ -4,9 +4,13 @@ const char* buildinfo = TextFormat("Ultra Shooter v1.0 build: %s %s", __DATE__, 
 std::vector<Actor*> actors;
 std::vector<Actor*> pending_actors;
 std::vector<Actor*> dereg_pending_actors;
+double gameplaytimestamp = 0;
+int globalscore = 0;
 Logger logger;
 Music menu_music;
 Texture bullet;
+Texture enemy;
+Texture enemy2;
 Font ocra;
 Font DefaultFont;
 GameState* gs = nullptr;
@@ -25,11 +29,14 @@ void SwitchGameState(GameState* gamestate)
 
 // Регистрирует Актора в списке (для того чтобы каждый кадр вызывался его Think())
 void RegisterActor(Actor* actor) {
-	pending_actors.emplace_back(actor);
+	if(actor != nullptr)
+		pending_actors.emplace_back(actor);
 }
+
 // Добавляет актора в очередь на удаление.
 void DeregisterActor(Actor* actor) {
-	dereg_pending_actors.emplace_back(actor);
+	if (actor != nullptr)
+		dereg_pending_actors.emplace_back(actor);
 }
 
 // Должно вызываться каждый кадр, чтобы зареганные акторы попали в список actors, и удалились уже ненужные.
@@ -43,6 +50,8 @@ void ProcessActors() {
 	if (dereg_pending_actors.size() != 0) {
 		for (auto it = dereg_pending_actors.begin(); it != dereg_pending_actors.end(); it++) {
 			actors.erase(std::remove(actors.begin(), actors.end(),  ( * it)), actors.end());
+			//delete (*it);
+			(*it) = nullptr;
 		}
 		dereg_pending_actors.clear();
 	}

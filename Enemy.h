@@ -1,5 +1,9 @@
 #pragma once
 #include "Actor.h"
+#include "globals.h"
+#include <cmath>
+#include <algorithm>
+
 class Enemy :
     public Actor
 {

@@ -4,7 +4,7 @@
 Bullet::Bullet()
 {
 	m_sprite = bullet; // Пуля грузится один раз при запуске игры, иначе память потечёт.
-	m_origin = { (float)m_sprite.height / 2,(float)m_sprite.width / 2 };
+	m_origin = { (float)m_sprite.width / 2,(float)m_sprite.height / 2 };
 	m_pos = { m_origin.x, m_origin.y };
 }
 
@@ -12,7 +12,7 @@ Bullet::Bullet()
 Bullet::Bullet(Vector2 Pos)
 {
 	m_sprite = bullet; // Пуля грузится один раз при запуске игры, иначе память потечёт.
-	m_origin = { (float)m_sprite.height / 2,(float)m_sprite.width / 2 };
+	m_origin = { (float)m_sprite.width / 2,(float)m_sprite.height / 2 };
 	m_pos = Pos;
 }
 

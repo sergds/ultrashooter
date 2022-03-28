@@ -15,8 +15,8 @@ Player::Player()
 	ImageResize(&tmp, tmp.width / 2, tmp.height / 2);
 	m_sprite2 = LoadTextureFromImage(tmp);
 	UnloadImage(tmp);
-	m_origin = { (float)m_sprite.height / 2,(float)m_sprite.width / 2 };
-	m_pos = { m_origin.x, 600 - m_origin.y * 2 };
+	m_origin = { (float)m_sprite.width / 2,(float)m_sprite.height / 2 };
+	m_pos = { m_origin.x, 650 - m_origin.y * 2 };
 }
 
 Player::~Player()

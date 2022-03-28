@@ -72,6 +72,7 @@ PROJECT_SOURCE_FILES ?= \
 	MainMenuGameState.cpp \
 	Player.cpp \
 	StartGameState.cpp \
+	EndGameState.cpp
 
 NATIVE_APP_GLUE_PATH    = $(ANDROID_NDK)/sources/android/native_app_glue
 

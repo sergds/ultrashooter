@@ -2,10 +2,11 @@
 
 Enemy::Enemy()
 {
-	m_sprite = LoadTexture("data/sprites/hihitler.png");
-	m_sprite2 = LoadTexture("data/sprites/hihitler2.png");
-	m_origin = { (float)m_sprite.height / 2,(float)m_sprite.width / 2 };
-	m_pos = { (float)GetRandomValue((int)m_origin.x, 600 - (int)m_origin.x), m_origin.y};
+	// Предзагруженные текстурки хихитлера
+	m_sprite = enemy;
+	m_sprite2 = enemy2;
+	m_origin = { (float)m_sprite.width / 2,(float)m_sprite.height / 2 };
+	m_pos = { (float)GetRandomValue((int)m_origin.x, 800 - (int)m_origin.x), -100};
 }
 
 Enemy::~Enemy()
@@ -48,6 +49,6 @@ void Enemy::Think()
 	else {
 		DrawTexture(m_sprite, m_pos.x - m_origin.x, m_pos.y - m_origin.y, WHITE);
 	}
-	m_pos.y += 50 * GetFrameTime();
+	m_pos.y += std::min<double>((70 + (GetTime() - gameplaytimestamp)) * GetFrameTime(), 4);
 	++m_tics;
 }
