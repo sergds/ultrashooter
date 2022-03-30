@@ -66,7 +66,7 @@ void GameplayGameState::Think()
 
 	DrawTextEx(DefaultFont, TextFormat("Score: %i", score), CLITERAL(Vector2){0, 25}, 25, 1, WHITE);
 	//DrawTextEx(DefaultFont, TextFormat("Lost: %i", prosrano), CLITERAL(Vector2){0, 55}, 25, 1, WHITE);
-	DrawTextEx(DefaultFont, TextFormat("Enemy Speed: %f pixels/s", (float)std::min<double>(((70 + (GetTime() - gameplaytimestamp)) * GetFrameTime()), 4)), CLITERAL(Vector2){0, 575}, 25, 1, WHITE);
+	DrawTextEx(DefaultFont, TextFormat("Enemy Speed: %f pixels/s", (float)std::min<double>(((70 + (GetTime() - gameplaytimestamp) * 3) * GetFrameTime()), MAX_ENEMY_SPEED)), CLITERAL(Vector2){0, 575}, 25, 1, WHITE);
 	m_spawntics += 1;
 	if (prosrano >= 1) {
 		for (auto it = actors.begin(); it != actors.end(); it++) {

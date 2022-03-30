@@ -31,3 +31,4 @@ extern void SwitchGameState(GameState* gs);
 extern void RegisterActor(Actor* actor);
 extern void DeregisterActor(Actor* actor);
 extern void ProcessActors();
+const int MAX_ENEMY_SPEED = 13;

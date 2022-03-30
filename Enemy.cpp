@@ -70,6 +70,6 @@ void Enemy::Think()
 	else {
 		DrawTexture(m_sprite, m_pos.x - m_origin.x, m_pos.y - m_origin.y, WHITE);
 	}
-	m_pos.y += std::min<double>((70 + (GetTime() - gameplaytimestamp)) * GetFrameTime(), 4);
+	m_pos.y += std::min<double>((70 + (GetTime() - gameplaytimestamp) * 3) * GetFrameTime(), MAX_ENEMY_SPEED);
 	++m_tics;
 }

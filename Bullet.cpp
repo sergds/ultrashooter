@@ -44,5 +44,5 @@ float Bullet::GetRotation()
 void Bullet::Think()
 {
 	DrawTexture(m_sprite, m_pos.x - m_origin.x, m_pos.y - m_origin.y, WHITE);
-	m_pos.y -= 200 * GetFrameTime();
+	m_pos.y -= 400 * GetFrameTime();
 }

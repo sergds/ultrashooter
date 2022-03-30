@@ -48,24 +48,30 @@ float Player::GetRotation()
 
 void Player::Think()
 {
-	if (m_grintics == 0) {
+	if (m_grintics <= 0) {
 		DrawTexture(m_sprite, m_pos.x - m_origin.x, m_pos.y - m_origin.y, WHITE);
 	}
 	else {
 		DrawTexture(m_sprite2, m_pos.x - m_origin.x, m_pos.y - m_origin.y, WHITE);
 	}
 	if (IsKeyDown(KEY_RIGHT) && m_pos.x <= 800 - m_origin.x / 2) {
-		m_pos.x += 400 * GetFrameTime();
+		m_pos.x += 450 * GetFrameTime();
 	}
 	if (IsKeyDown(KEY_LEFT) && m_pos.x >= 0 + m_origin.x) {
-		m_pos.x -= 400 * GetFrameTime();
+		m_pos.x -= 450 * GetFrameTime();
 	}
-	if (IsKeyPressed(KEY_SPACE)) {
-		//Bullet bullet(CLITERAL(Vector2){m_pos.x, m_pos.y - 50});
-		RegisterActor(new Bullet(CLITERAL(Vector2) { m_pos.x, m_pos.y - 50 }));
-		m_grintics = 25;
-		SetSoundPitch(shot, (float)GetRandomValue(70, 90) / 100);
-		PlaySound(shot);
+	if (IsKeyDown(KEY_SPACE) || IsKeyDown(KEY_UP)) {
+		if (m_grintics <= 0) {
+			//Bullet bullet(CLITERAL(Vector2){m_pos.x, m_pos.y - 50});
+			RegisterActor(new Bullet(CLITERAL(Vector2) { m_pos.x, m_pos.y - 50 }));
+			m_grintics = 20;
+			SetSoundPitch(shot, (float)GetRandomValue(70, 90) / 100);
+			PlaySound(shot);
+		}
+	}
+	else {
+		if (m_grintics > 0)
+			m_grintics -= 1;
 	}
 	if (m_grintics > 0)
 		--m_grintics;

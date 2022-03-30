@@ -5,7 +5,7 @@ void StartGameState::Init()
 {
 	logger.Log("Initialized StartGameState!");
 	logger.Log("===== Game Init stage 2! =====");
-	logger.Log("===== Checking game data presence =====");
+	logger.Log("===== Checking game data =====");
 #ifndef __ANDROID__ 
 	if (FileExists("data/fonts/ocrabeckerrus_lat.otf") && FileExists("data/fonts/defaultfont.fnt") && FileExists("data/tink.wav") && FileExists("data/sprites/bg_menu.png") && FileExists("data/sprites/menu_enter.png") && FileExists("data/sprites/menu_logo.png") && FileExists("data/menu_music.ogg"))
 	{
