@@ -106,21 +106,24 @@ ifeq ($(RAYLIB_LIBTYPE),SHARED)
     PROJECT_SHARED_LIBS = lib/$(ANDROID_ARCH_NAME)/libraylib.so 
 endif
 
+# C++!!
+PROJECT_SHARED_LIBS += lib/$(ANDROID_ARCH_NAME)/libc++_shared.so 
+
 # Compiler and archiver
 ifeq ($(ANDROID_ARCH),ARM)
-    CC = $(ANDROID_TOOLCHAIN)/bin/armv7a-linux-androideabi$(ANDROID_API_VERSION)-clang
+    CC = $(ANDROID_TOOLCHAIN)/bin/armv7a-linux-androideabi$(ANDROID_API_VERSION)-clang++
     AR = $(ANDROID_TOOLCHAIN)/bin/arm-linux-androideabi-ar
 endif
 ifeq ($(ANDROID_ARCH),ARM64)
-    CC = $(ANDROID_TOOLCHAIN)/bin/aarch64-linux-android$(ANDROID_API_VERSION)-clang
+    CC = $(ANDROID_TOOLCHAIN)/bin/aarch64-linux-android$(ANDROID_API_VERSION)-clang++
     AR = $(ANDROID_TOOLCHAIN)/bin/aarch64-linux-android-ar
 endif
 ifeq ($(ANDROID_ARCH),x86)
-    CC = $(ANDROID_TOOLCHAIN)/bin/i686-linux-android$(ANDROID_API_VERSION)-clang
+    CC = $(ANDROID_TOOLCHAIN)/bin/i686-linux-android$(ANDROID_API_VERSION)-clang++
     AR = $(ANDROID_TOOLCHAIN)/bin/i686-linux-android-ar
 endif
 ifeq ($(ANDROID_ARCH),x86_64)
-    CC = $(ANDROID_TOOLCHAIN)/bin/x86_64-linux-android$(ANDROID_API_VERSION)-clang
+    CC = $(ANDROID_TOOLCHAIN)/bin/x86_64-linux-android$(ANDROID_API_VERSION)-clang++
     AR = $(ANDROID_TOOLCHAIN)/bin/x86_64-linux-android-ar
 endif
 
@@ -151,7 +154,7 @@ LDFLAGS += -L. -L$(PROJECT_BUILD_PATH)/obj -L$(PROJECT_BUILD_PATH)/lib/$(ANDROID
 
 # Define any libraries to link into executable
 # if you want to link libraries (libname.so or libname.a), use the -lname
-LDLIBS = -lm -lc -lraylib -llog -landroid -lEGL -lGLESv2 -lOpenSLES -ldl -lc++
+LDLIBS = -lm -lc -lraylib -llog -landroid -lEGL -lGLESv2 -lOpenSLES -ldl -lc++ -static-libstdc++
 
 # Generate target objects list from PROJECT_SOURCE_FILES
 OBJS = $(patsubst %.c, $(PROJECT_BUILD_PATH)/obj/%.o, $(PROJECT_SOURCE_FILES))
@@ -273,6 +276,7 @@ compile_native_app_glue:
 
 # Compile project code into a shared library: lib/lib$(PROJECT_LIBRARY_NAME).so 
 compile_project_code: $(OBJS)
+	xcopy "$(ANDROID_NDK)\sources\cxx-stl\llvm-libc++\libs\$(ANDROID_ARCH_NAME)\libc++_shared.so" "$(PROJECT_BUILD_PATH)\lib\$(ANDROID_ARCH_NAME)\"
 	$(CC) -o $(PROJECT_BUILD_PATH)/lib/$(ANDROID_ARCH_NAME)/lib$(PROJECT_LIBRARY_NAME).so $(OBJS) -shared $(INCLUDE_PATHS) $(LDFLAGS) $(LDLIBS)
 
 # Compile all .c files required into object (.o) files
