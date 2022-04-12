@@ -10,6 +10,8 @@
 #include <emscripten/emscripten.h>
 #endif
 
+bool fullscreenfailsafe = false;
+
 int WinMain(int argc,char* argv[]) {
 #ifndef __ANDROID__ 
 	if (!DirectoryExists("data")) {
@@ -26,8 +28,24 @@ int WinMain(int argc,char* argv[]) {
 	SetTargetFPS(60);
 	logger.Log(buildinfo);
 	logger.Log("Loading Ultra Shooter!");
-	// Если состояние игры не задано, то поставить Начальное
 	while (!WindowShouldClose() && IsWindowReady()) {
+		// Alt+Enter = Fullscreen.
+		if (IsKeyDown(KEY_LEFT_ALT) && IsKeyDown(KEY_ENTER)) {
+			if (!fullscreenfailsafe) {
+				ToggleFullscreen();
+				if(IsWindowFullscreen()){
+					HideCursor();
+				}
+				else
+				{
+					ShowCursor();
+				}
+				fullscreenfailsafe = true;
+			}
+		}
+		else {
+			fullscreenfailsafe = false;
+		}
 		BeginDrawing();
 		if (gs == nullptr) {
 			ClearBackground(BLACK);
@@ -36,6 +54,7 @@ int WinMain(int argc,char* argv[]) {
 		if (gs != nullptr)
 			gs->Think();
 		EndDrawing();
+		// Если состояние игры не задано, то поставить Начальное
 		if (gs == nullptr) {
 			gs = new StartGameState;
 			gs->Init();
@@ -45,6 +64,7 @@ int WinMain(int argc,char* argv[]) {
 	return 0;
 }
 
+// Для Всего кроме MSVC. 
 int main(int argc,char* argv[]) {
 	WinMain(argc,argv);
 }

@@ -16,6 +16,7 @@ void GameplayGameState::Think()
 	UpdateMusicStream(game_music);
 	std::vector<Actor*> hihitlers;
 	std::vector<Actor*> bullets;
+	ClearBackground(GREEN);
 	DrawTexture(bg, 0, 0, WHITE);
 	//player.Think();
 	//testenemy.Think();

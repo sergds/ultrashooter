@@ -54,13 +54,13 @@ void Player::Think()
 	else {
 		DrawTexture(m_sprite2, m_pos.x - m_origin.x, m_pos.y - m_origin.y, WHITE);
 	}
-	if (IsKeyDown(KEY_RIGHT) && m_pos.x <= 800 - m_origin.x / 2) {
+	if ((IsKeyDown(KEY_RIGHT) || IsKeyDown(KEY_D)) && m_pos.x <= 800 - m_origin.x / 2) {
 		m_pos.x += 450 * GetFrameTime();
 	}
-	if (IsKeyDown(KEY_LEFT) && m_pos.x >= 0 + m_origin.x) {
+	if ((IsKeyDown(KEY_LEFT) || IsKeyDown(KEY_A)) && m_pos.x >= 0 + m_origin.x) {
 		m_pos.x -= 450 * GetFrameTime();
 	}
-	if (IsKeyDown(KEY_SPACE) || IsKeyDown(KEY_UP)) {
+	if (IsKeyDown(KEY_SPACE) || IsKeyDown(KEY_UP) || IsKeyDown(KEY_W)) {
 		if (m_grintics <= 0) {
 			//Bullet bullet(CLITERAL(Vector2){m_pos.x, m_pos.y - 50});
 			RegisterActor(new Bullet(CLITERAL(Vector2) { m_pos.x, m_pos.y - 50 }));
