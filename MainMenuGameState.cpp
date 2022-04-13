@@ -20,7 +20,7 @@ void MainMenuGameState::Think()
 	if ((int)round(GetTime()) % 2) {
 		DrawTexture(enter, 100, 300, WHITE);
 	}
-	if (IsKeyPressed(KEY_ENTER)) {
+	if (IsKeyPressed(KEY_ENTER) && !IsKeyDown(KEY_LEFT_ALT)) {
 		StopMusicStream(menu_music);
 		SwitchGameState(new GameplayGameState);
 	}
