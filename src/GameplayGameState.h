@@ -14,9 +14,11 @@ class GameplayGameState :
 private:
     Texture bg;
     RenderTexture2D rt;
+    Sound oops;
     int score = 0;
     int prosrano = 0;
     int prosranotics = 0;
+    int prosranoradius = 800;
     Vector2 prosrano_vec;
     int m_spawntics = 300;
 public:

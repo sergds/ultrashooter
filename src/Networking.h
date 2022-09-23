@@ -2,7 +2,7 @@
 #include <cstdint>
 #include <string>
 #include "fix_winapi_conflicts.h"
-#include <enet.h>
+#include <enet/enet.h>
 
 // The UltraShooter Networking.
 // Currently only up to 2 players are supported (including host).

@@ -16,6 +16,10 @@ void Networking::Host()
 	addr.host = ENET_HOST_ANY;
 	addr.port = 1945;
 	host = enet_host_create(&addr, 1, 1, 0, 0);
+	if(host == NULL){
+		logger.Log("FAILED TO CREATE HOST!!!");
+		return;
+	}
 	authority = true;
 	logger.Log("Created a Host, and became an authority.");
 	return;

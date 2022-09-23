@@ -20,8 +20,8 @@ void StartGameState::Init()
 	}
 #endif // !__ANDROID__
 	ocra = LoadFontEx("data/fonts/ocrabeckerrus_lat.otf", 50, 0, NULL);
-	int chars = 0;
-	int* codepoints = LoadCodepoints(charset, &chars);
+	//int chars = 0;
+	//int* codepoints = LoadCodepoints(charset, &chars);
 	//DefaultFont = LoadFontEx("data/LiberationSans-Regular.ttf", 50, codepoints, chars);
 	DefaultFont = LoadFont("data/fonts/defaultfont.fnt");
 	logger.Log("Initialized Fonts!");

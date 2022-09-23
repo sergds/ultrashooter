@@ -365,3 +365,5 @@ ultrashooter.wasm
 ultrashooter.data
 android.ultrashooter
 ultrashooter_log.txt
+*_build
+embuild

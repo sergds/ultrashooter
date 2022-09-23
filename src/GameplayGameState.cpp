@@ -1,4 +1,5 @@
 #include "GameplayGameState.h"
+#include "raylib.h"
 
 void GameplayGameState::Init()
 {
@@ -25,35 +26,37 @@ void GameplayGameState::Think()
 		m_spawntics = 0;
 	}
 
-	// Даём всем зареганным акторам подумать.
+	// Р”Р°С‘Рј РІСЃРµРј Р·Р°СЂРµРіР°РЅРЅС‹Рј Р°РєС‚РѕСЂР°Рј РїРѕРґСѓРјР°С‚СЊ.
 	for (auto it = actors.begin(); it != actors.end(); it++) {
 		(* it)->Think();
-		if ((*it)->GetName() == "Bullet") { // Если пуля
-			// Сохраняем для будущей проверки коллизии с хихитлерами.
+		if ((*it)->GetName() == "Bullet") { // Р•СЃР»Рё РїСѓР»СЏ
+			// РЎРѕС…СЂР°РЅСЏРµРј РґР»СЏ Р±СѓРґСѓС‰РµР№ РїСЂРѕРІРµСЂРєРё РєРѕР»Р»РёР·РёРё СЃ С…РёС…РёС‚Р»РµСЂР°РјРё.
 			bullets.emplace_back((*it));
-	// Проверяем высоту и уничтожаем если выше края экрана
+	// РџСЂРѕРІРµСЂСЏРµРј РІС‹СЃРѕС‚Сѓ Рё СѓРЅРёС‡С‚РѕР¶Р°РµРј РµСЃР»Рё РІС‹С€Рµ РєСЂР°СЏ СЌРєСЂР°РЅР°
 			if ((*it)->GetPosition().y <= 0) {
 				DeregisterActor((*it));
 			}
 		}
-		if ((*it)->GetName() == "Enemy") { // Если хихитлер
-			// Сохраняем для будущей проверки коллизии с пулями.
+		if ((*it)->GetName() == "Enemy") { // Р•СЃР»Рё С…РёС…РёС‚Р»РµСЂ
+			// РЎРѕС…СЂР°РЅСЏРµРј РґР»СЏ Р±СѓРґСѓС‰РµР№ РїСЂРѕРІРµСЂРєРё РєРѕР»Р»РёР·РёРё СЃ РїСѓР»СЏРјРё.
 			hihitlers.emplace_back((*it));
-	// Проверяем высоту и уничтожаем если ниже края экрана
+	// РџСЂРѕРІРµСЂСЏРµРј РІС‹СЃРѕС‚Сѓ Рё СѓРЅРёС‡С‚РѕР¶Р°РµРј РµСЃР»Рё РЅРёР¶Рµ РєСЂР°СЏ СЌРєСЂР°РЅР°
 			if ((*it)->GetPosition().y >= 600) {
 				//DeregisterActor((*it));
 				prosrano_vec = (*it)->GetPosition();
-				prosrano += 1; // За каждого упущенноного хихитлера начисляем просро-очки.
+				prosrano += 1; // Р—Р° РєР°Р¶РґРѕРіРѕ СѓРїСѓС‰РµРЅРЅРѕРЅРѕРіРѕ С…РёС…РёС‚Р»РµСЂР° РЅР°С‡РёСЃР»СЏРµРј РїСЂРѕСЃСЂРѕ-РѕС‡РєРё.
 			}
 		}
 	}
 	if (prosrano >= 1) {
-		if (prosranotics == 1) {
+		if (prosranotics == 4) {
 			rt = LoadRenderTexture(800, 600);
 			StopMusicStream(game_music);
+			oops = LoadSound("data/scratch.wav");
+			PlaySoundMulti(oops);
 			freezeframe = true;
 		}
-		if (prosranotics == 290) {
+		if (prosranotics == 1000) {
 			for (auto it = actors.begin(); it != actors.end(); it++) {
 				delete (*it);
 			}
@@ -63,26 +66,46 @@ void GameplayGameState::Think()
 			globalscore = score;
 		}
 
-		if (prosranotics > 1) {
+		if (prosranotics > 1 && prosranotics < 300) {
 			BeginTextureMode(rt);
 			ClearBackground(BLACK);
 			BeginBlendMode(BLEND_SUBTRACT_COLORS);
-			DrawCircle(prosrano_vec.x, GetScreenHeight() - prosrano_vec.y, 300 - prosranotics, CLITERAL(Color){255, 255, 255, 255});
+			DrawCircle(prosrano_vec.x, GetScreenHeight() - prosrano_vec.y, prosranoradius, CLITERAL(Color){255, 255, 255, 255});
 			EndBlendMode();
 			EndTextureMode();
+			prosranoradius -= 7;
+		}
+
+		if (prosranotics > 600 && prosranotics <= 850) {
+			BeginTextureMode(rt);
+			ClearBackground(BLACK);
+			BeginBlendMode(BLEND_SUBTRACT_COLORS);
+			if(850 - prosranotics > 0)
+				DrawCircle(prosrano_vec.x, GetScreenHeight() - prosrano_vec.y, prosranoradius, CLITERAL(Color){255, 255, 255, 255});
+			EndBlendMode();
+			EndTextureMode();
+			prosranoradius -= 8;
+		}
+		if(prosranoradius < 0 && !IsSoundPlaying(oops) && prosranoradius > -1000){
+			oops = LoadSound("data/hihitler_sounds/speak2.wav");
+			PlaySoundMulti(oops);
+			prosranoradius = -1000;
+		}
+
+		if (prosranotics > 1200) {
+			freezeframe = false;
+			StopSoundMulti();
+			UnloadSound(oops);
+			UnloadRenderTexture(rt);
+			SwitchGameState(new EndGameState());
 		}
 
 		DrawTexture(rt.texture, 0, 0, WHITE);
 		//DrawCircle(prosrano_vec.x, prosrano_vec.y, 300 - prosranotics, CLITERAL(Color){255, 0, 0, 255});
-		if (prosranotics > 300) {
-			freezeframe = false;
-			UnloadRenderTexture(rt);
-			SwitchGameState(new EndGameState());
-		}
-		prosranotics += 1;
+		prosranotics += 4;
 		return;
 	}
-	// Проверка колизии. (сложнааа)
+	// РџСЂРѕРІРµСЂРєР° РєРѕР»РёР·РёРё. (СЃР»РѕР¶РЅР°Р°Р°)
 	for (auto b_it = bullets.begin(); b_it != bullets.end(); b_it++) {
 		for (auto h_it = hihitlers.begin(); h_it != hihitlers.end(); h_it++) {
 			Rectangle bullet_rec = { (*b_it)->GetPosition().x - (*b_it)->GetOrigin().x, (*b_it)->GetPosition().y - (*b_it)->GetOrigin().y, (*b_it)->GetOrigin().x * 2, (*b_it)->GetOrigin().y * 2 };
@@ -98,7 +121,7 @@ void GameplayGameState::Think()
 		}
 	}
 
-	// Обрабатываем акторов в очередях на удаление/регистрацию
+	// РћР±СЂР°Р±Р°С‚С‹РІР°РµРј Р°РєС‚РѕСЂРѕРІ РІ РѕС‡РµСЂРµРґСЏС… РЅР° СѓРґР°Р»РµРЅРёРµ/СЂРµРіРёСЃС‚СЂР°С†РёСЋ
 	ProcessActors();
 
 	DrawTextEx(DefaultFont, TextFormat("Score: %i", score), CLITERAL(Vector2){0, 25}, 25, 1, WHITE);
