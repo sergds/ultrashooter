@@ -10,5 +10,7 @@ public:
     void Destroy();
     EndGameState();
     ~EndGameState();
+private:
+    int frames = 0;
 };
 

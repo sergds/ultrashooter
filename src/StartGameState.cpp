@@ -1,6 +1,10 @@
 #include "StartGameState.h"
 #include "AlsoStartGameState.h"
 #include "Networking.h"
+#include "globals.h"
+#include <cstring>
+#include <sstream>
+#include <string>
 #include <thread>
 
 void StartGameState::Init()
@@ -48,6 +52,8 @@ void StartGameState::Init()
 	if (Networking::getInstance().Init() == 0) {
 		networking = true; // Let everything use it.
 		logger.Log("Initialized networking!");
+		logger.Log("Using Default Network TickRate of " + std::to_string(NET_TICRATE) + " or " + std::to_string((1/NET_TICRATE)*1000) + "ms");
+		net_ticrate = NET_TICRATE;
 		std::thread netthd(NetThread);
 		netthrd = new std::thread(std::move(netthd));
 	}

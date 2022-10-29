@@ -1,7 +1,7 @@
 #pragma once
 #include "GameState.h"
 #include "globals.h"
-// Начальное состояние (заставка).
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ).
 class StartGameState :
     public GameState
 {

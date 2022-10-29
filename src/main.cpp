@@ -54,7 +54,7 @@ int WinMain(int argc,char* argv[]) {
 		if (gs != nullptr)
 			gs->Think();
 		EndDrawing();
-		// Если состояние игры не задано, то поставить Начальное
+		// Р•СЃР»Рё СЃРѕСЃС‚РѕСЏРЅРёРµ РёРіСЂС‹ РЅРµ Р·Р°РґР°РЅРѕ, С‚Рѕ РїРѕСЃС‚Р°РІРёС‚СЊ РќР°С‡Р°Р»СЊРЅРѕРµ
 		if (gs == nullptr) {
 			gs = new StartGameState;
 			gs->Init();
@@ -66,7 +66,7 @@ int WinMain(int argc,char* argv[]) {
 	return 0;
 }
 
-// Для Всего кроме MSVC. 
+// Р”Р»СЏ Р’СЃРµРіРѕ РєСЂРѕРјРµ MSVC. 
 int main(int argc,char* argv[]) {
 	WinMain(argc,argv);
 }

@@ -4,6 +4,35 @@ project(ultrashooter LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+include(CheckIPOSupported)
+check_ipo_supported(RESULT supported OUTPUT error)
+
+#========== Add CPM package manager =================
+set(CPM_DOWNLOAD_LOCATION "${CMAKE_BINARY_DIR}/cmake/CPM.cmake")
+set(CPM_VERSION 0.18)
+
+if(NOT EXISTS ${CPM_DOWNLOAD_LOCATION})
+   message(STATUS "Downloading CPM.cmake")
+   file(DOWNLOAD
+https://github.com/TheLartians/CPM.cmake/releases/download/v${CPM_VERSION}/CPM.cmake
+${CPM_DOWNLOAD_LOCATION})
+endif(NOT EXISTS ${CPM_DOWNLOAD_LOCATION})
+include(${CPM_DOWNLOAD_LOCATION}) 
+
+#========== Add CURL =================
+CPMAddPackage(
+        NAME curl
+        VERSION 7.67.0
+        URL https://github.com/curl/curl/releases/download/curl-7_67_0/curl-7.67.0.tar.gz
+        OPTIONS
+        "CMAKE_USE_LIBSSH2 OFF"
+        "BUILD_CURL_EXE OFF"
+        "BUILD_SHARED_LIBS OFF"
+        "HTTP_ONLY ON"
+        "BUILD_TESTING OFF"
+) 
 
 # Dependencies
 set(RAYLIB_VERSION 4.2.0)
@@ -80,6 +109,7 @@ target_include_directories(ultrashooter PRIVATE ${enet_SOURCE_DIR}/include)
 target_link_libraries(ultrashooter raylib)
 target_link_libraries(ultrashooter enet)
 target_link_libraries(ultrashooter Threads::Threads)
+target_link_libraries(ultrashooter libcurl)
 if(MINGW OR UNIX AND NOT CMAKE_SYSTEM_NAME STREQUAL "Emscripten" AND NOT CMAKE_SYSTEM_NAME STREQUAL "Android")
     target_link_options(ultrashooter PRIVATE -static-libgcc -static-libstdc++ -Wl,-Bstatic -lstdc++ -lpthread -Wl,-Bdynamic)
 endif()
@@ -87,6 +117,13 @@ if(WIN32)
   target_link_libraries(ultrashooter winmm ws2_32)
 endif()
 file(COPY data DESTINATION .)
+
+if( supported )
+    message(STATUS "IPO / LTO enabled")
+    set_property(TARGET ultrashooter PROPERTY INTERPROCEDURAL_OPTIMIZATION TRUE)
+else()
+    message(STATUS "IPO / LTO not supported: <${error}>")
+endif()
 
 # Web Configurations
 if (CMAKE_SYSTEM_NAME STREQUAL "Emscripten")
