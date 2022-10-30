@@ -1,23 +1,34 @@
 #include "EndGameState.h"
 #include "globals.h"
+#include "nlohmann/detail/conversions/from_json.hpp"
 #include "raylib.h"
+#include "UserData.h"
+#include <nlohmann/json.hpp>
 #include <fstream>
 #include <ios>
+using json = nlohmann::json;
 
 void EndGameState::Init()
 {
-	std::ifstream fl("hiscore.dat");
+	std::ifstream fl("userdata.usud");
 	if(fl.is_open()){
-		fl >> topscore;
+		json j;
+		fl >> j;
+		auto ud = j.get<UserData>();
+		topscore = ud.hiscore;
 		fl.close();
 	}
+
 	endt_music = LoadMusicStream("data/dailyagony.xm");
 	SetMusicVolume(endt_music, 0.5);
 	PlayMusicStream(endt_music);
 	if (globalscore > topscore){
+		UserData ud;
+		ud.hiscore = globalscore;
 		topscore = globalscore;
-		std::ofstream fl("hiscore.dat", std::ios_base::trunc);
-		fl << topscore;
+		std::ofstream fl("userdata.usud", std::ios_base::trunc);
+		json j = ud;
+		fl << j;
 		fl.close();
 	}
 }

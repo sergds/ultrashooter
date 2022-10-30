@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.10)
-project(ultrashooter LANGUAGES CXX)
+project(ultrashooter LANGUAGES CXX C)
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
@@ -11,7 +11,7 @@ check_ipo_supported(RESULT supported OUTPUT error)
 
 #========== Add CPM package manager =================
 set(CPM_DOWNLOAD_LOCATION "${CMAKE_BINARY_DIR}/cmake/CPM.cmake")
-set(CPM_VERSION 0.18)
+set(CPM_VERSION 0.34.3)
 
 if(NOT EXISTS ${CPM_DOWNLOAD_LOCATION})
    message(STATUS "Downloading CPM.cmake")
@@ -32,7 +32,18 @@ CPMAddPackage(
         "BUILD_SHARED_LIBS OFF"
         "HTTP_ONLY ON"
         "BUILD_TESTING OFF"
+        "CURL_ENABLE_SSL OFF"
+        "CURL_USE_OPENSSL OFF"
+        "CMAKE_USE_OPENSSL OFF"
 ) 
+
+CPMAddPackage(
+  NAME nlohmann_json
+  VERSION 3.11.2
+  URL https://github.com/nlohmann/json/archive/refs/tags/v3.11.2.zip
+  OPTIONS
+    "JSON_BuildTests OFF"
+)
 
 # Dependencies
 set(RAYLIB_VERSION 4.2.0)
@@ -102,7 +113,18 @@ list (REMOVE_DUPLICATES ultrashooter_INCLUDE_DIRS)
 if(NOT CMAKE_SYSTEM_NAME STREQUAL "Android")
   add_executable(ultrashooter WIN32 ${ultrashooter_SOURCES} ultrashooter.rc)
 else()
-  add_library(ultrashooter SHARED ${ultrashooter_SOURCES})
+  set_source_files_properties(${ANDROID_NDK}/sources/android/native_app_glue/android_native_app_glue.c PROPERTIES LANGUAGE C)
+  add_library(ultrashooter SHARED ${ultrashooter_SOURCES} ${ANDROID_NDK}/sources/android/native_app_glue/android_native_app_glue.c)
+  find_library( # Defines the name of the path variable that stores the
+              # location of the NDK library.
+              log-lib
+
+              # Specifies the name of the NDK library that
+              # CMake needs to locate.
+              log )
+
+# You need to link static libraries against your shared native library.
+target_link_libraries(ultrashooter ${log-lib} )
 endif()
 target_include_directories(ultrashooter PRIVATE ${ultrashooter_INCLUDE_DIRS})
 target_include_directories(ultrashooter PRIVATE ${enet_SOURCE_DIR}/include)
@@ -110,6 +132,7 @@ target_link_libraries(ultrashooter raylib)
 target_link_libraries(ultrashooter enet)
 target_link_libraries(ultrashooter Threads::Threads)
 target_link_libraries(ultrashooter libcurl)
+target_link_libraries(ultrashooter nlohmann_json)
 if(MINGW OR UNIX AND NOT CMAKE_SYSTEM_NAME STREQUAL "Emscripten" AND NOT CMAKE_SYSTEM_NAME STREQUAL "Android")
     target_link_options(ultrashooter PRIVATE -static-libgcc -static-libstdc++ -Wl,-Bstatic -lstdc++ -lpthread -Wl,-Bdynamic)
 endif()
@@ -118,12 +141,12 @@ if(WIN32)
 endif()
 file(COPY data DESTINATION .)
 
-if( supported )
-    message(STATUS "IPO / LTO enabled")
-    set_property(TARGET ultrashooter PROPERTY INTERPROCEDURAL_OPTIMIZATION TRUE)
-else()
-    message(STATUS "IPO / LTO not supported: <${error}>")
-endif()
+#if( supported )
+    #message(STATUS "IPO / LTO enabled")
+    #set_property(TARGET ultrashooter PROPERTY INTERPROCEDURAL_OPTIMIZATION TRUE)
+#else()
+#    message(STATUS "IPO / LTO not supported: <${error}>")
+#endif()
 
 # Web Configurations
 if (CMAKE_SYSTEM_NAME STREQUAL "Emscripten")

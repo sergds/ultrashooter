@@ -2,6 +2,7 @@
 #include "AlsoStartGameState.h"
 #include "Networking.h"
 #include "globals.h"
+#include "raylib.h"
 #include <cstring>
 #include <sstream>
 #include <string>
@@ -46,13 +47,11 @@ void StartGameState::Init()
 	ImageResize(&tmp, tmp.width / 2, tmp.height / 2);
 	bullet = LoadTextureFromImage(tmp);
 	UnloadImage(tmp);
-	Sound tink = LoadSound("data/tink.wav");
-	PlaySound(tink);
 	// Attempt to init networking.
 	if (Networking::getInstance().Init() == 0) {
 		networking = true; // Let everything use it.
 		logger.Log("Initialized networking!");
-		logger.Log("Using Default Network TickRate of " + std::to_string(NET_TICRATE) + " or " + std::to_string((1/NET_TICRATE)*1000) + "ms");
+		logger.Log("Using Default Network TickRate of " + std::to_string(NET_TICRATE));
 		net_ticrate = NET_TICRATE;
 		std::thread netthd(NetThread);
 		netthrd = new std::thread(std::move(netthd));
@@ -60,6 +59,8 @@ void StartGameState::Init()
 	Color color{ 0,255,0,255 };
 	col = color;
 	m_binitialized = true;
+	Sound tink = LoadSound("data/tink.wav");
+	PlaySound(tink);
 }
 
 void StartGameState::Think()

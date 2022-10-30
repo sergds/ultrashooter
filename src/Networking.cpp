@@ -20,7 +20,7 @@ int Networking::Init()
 void Networking::Host()
 {
 	net_ticrate = NET_TICRATE;
-	logger.Log("Using Network TickRate of " + std::to_string(net_ticrate) + " or " + std::to_string((1/net_ticrate)*1000) + "ms");
+	logger.Log("Using Network TickRate of " + std::to_string(net_ticrate));
 	ENetAddress addr;
 	addr.host = ENET_HOST_ANY;
 	addr.port = 1945;
@@ -41,8 +41,8 @@ void Networking::DestroyHost() {
 		authority = false;
 		logger.Log("Destroyed host.");
 		logger.Log("No longer an authority.");
-		net_ticrate = 10;
-		logger.Log("Using Network TickRate of " + std::to_string(net_ticrate) + " or " + std::to_string((1/net_ticrate)*1000) + "ms, due to inactivity...");
+		net_ticrate = 33;
+		logger.Log("Using Network TickRate of " + std::to_string(net_ticrate));
 	}
 }
 
@@ -72,7 +72,7 @@ bool Networking::GetAuthority()
 bool Networking::Connect(std::string hostname)
 {
 	net_ticrate = NET_TICRATE;
-	logger.Log("Using Network TickRate of " + std::to_string(net_ticrate) + " or " + std::to_string((1/net_ticrate)*1000) + "ms");
+	logger.Log("Using Network TickRate of " + std::to_string(net_ticrate));
 	host = enet_host_create(NULL /* create a client host */,
 		1 /* only allow 1 outgoing connection */,
 		2 /* allow up 2 channels to be used, 0 and 1 */,

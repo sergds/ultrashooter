@@ -33,7 +33,7 @@ Texture enemy2;
 Font ocra;
 Font DefaultFont;
 GameState* gs = nullptr;
-int net_ticrate = 60;
+float net_ticrate = 60;
 
 void SwitchGameState(GameState* gamestate)
 {
@@ -49,7 +49,7 @@ void NetThread()
 {
 	while (!quitting) {
 		Networking::getInstance().Frame();
-		std::this_thread::sleep_for(std::chrono::milliseconds((1/NET_TICRATE)*1000));
+		std::this_thread::sleep_for(std::chrono::milliseconds(NET_TICRATE));
 	}
 }
 

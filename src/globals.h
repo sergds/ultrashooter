@@ -39,5 +39,5 @@ extern void RegisterActor(Actor* actor);
 extern void DeregisterActor(Actor* actor);
 extern void ProcessActors();
 const int MAX_ENEMY_SPEED = 13;
-#define NET_TICRATE 60
-extern int net_ticrate;
+#define NET_TICRATE 10
+extern float net_ticrate;
