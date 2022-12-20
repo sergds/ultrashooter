@@ -38,11 +38,11 @@ void StartGameState::Init()
 	speak1 = LoadSound("data/hihitler_sounds/speak1.wav");
 	speak2 = LoadSound("data/hihitler_sounds/speak2.wav");
 	sc = LoadSound("data/hihitler_sounds/sheisse-koph.wav");
-	SetSoundVolume(death1, 0.3);
-	SetSoundVolume(death2, 0.3);
-	SetSoundVolume(speak1, 0.5);
-	SetSoundVolume(speak2, 0.5);
-	SetSoundVolume(sc, 0.3);
+	SetSoundVolume(death1, 0.8);
+	SetSoundVolume(death2, 0.8);
+	SetSoundVolume(speak1, 0.6);
+	SetSoundVolume(speak2, 0.6);
+	SetSoundVolume(sc, 1);
 	Image tmp = LoadImageFromTexture(bullet);
 	ImageResize(&tmp, tmp.width / 2, tmp.height / 2);
 	bullet = LoadTextureFromImage(tmp);
@@ -72,8 +72,12 @@ void StartGameState::Think()
 		DrawTextEx(ocra, "Loading...", pos, 20, 1, col);
 		DrawTextEx(ocra, "Loaded!", pos1, 20, 1, col);
 		DrawTextEx(ocra, buildinfo, CLITERAL(Vector2){0,40}, 20, 1, col);
-		if (col.a == 251) {
-			WaitTime(1000);
+		#ifdef GITHASH
+		DrawTextEx(ocra, TextFormat("GIT VERSION: %s", STRINGIFY(GITHASH)), CLITERAL(Vector2){0, (float)GetRenderHeight() - 20}, 20, 1, RED); // Потенциально опасно, может вызвать проблемы при изменении поведения CMake
+		#endif
+
+		if (col.a == 252) {
+			WaitTime(1.5);
 		}
 		if(col.a >= 10)
 			col.a -= 3;

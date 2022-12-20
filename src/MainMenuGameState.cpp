@@ -1,5 +1,6 @@
 #include "MainMenuGameState.h"
 #include "GameplayGameState.h"
+#include "Logger.h"
 #include "ResourceSystem.h"
 #include "Networking.h"
 #include <thread>
@@ -57,6 +58,7 @@ void MainMenuGameState::Think()
 		}
 		break;
 	case 2:
+		logger.Log("Unimplemented multiplayer menu action");
 		multiplayer_stage = 0;
 		break;
 	case 3:

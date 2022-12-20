@@ -6,6 +6,7 @@
 #include "Logger.h"
 #include "GameState.h"
 #include "Actor.h"
+#include "globals.h"
 extern std::vector<Actor*> actors;
 extern std::vector<Actor*> pending_actors;
 extern std::vector<Actor*> dereg_pending_actors;
@@ -41,3 +42,5 @@ extern void ProcessActors();
 const int MAX_ENEMY_SPEED = 13;
 #define NET_TICRATE 10
 extern float net_ticrate;
+#define STRINGIFY2(arg) #arg
+#define STRINGIFY(arg) STRINGIFY2(arg)

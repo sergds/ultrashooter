@@ -2,7 +2,10 @@
 #include <cstdint>
 #include <string>
 #include "fix_winapi_conflicts.h"
+#if !defined(PLATFORM_WEB)
+#define ENET_IMPLEMENTATION
 #include <enet/enet.h>
+#endif
 
 // The UltraShooter Networking.
 // Currently only up to 2 players are supported (including host).
@@ -28,8 +31,10 @@ public:
    };
 private:
     bool authority = false; // Set to true if this machine is the host.
+#if !defined(PLATFORM_WEB)
     ENetPeer* otherPeer;
     ENetHost* host;
+#endif
     Networking() {};
     ~Networking();
 public:

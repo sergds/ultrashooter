@@ -35,6 +35,7 @@ Font DefaultFont;
 GameState* gs = nullptr;
 float net_ticrate = 60;
 
+
 void SwitchGameState(GameState* gamestate)
 {
 	gs->Destroy();

@@ -21,7 +21,37 @@ ${CPM_DOWNLOAD_LOCATION})
 endif(NOT EXISTS ${CPM_DOWNLOAD_LOCATION})
 include(${CPM_DOWNLOAD_LOCATION}) 
 
-#========== Add CURL =================
+#========== Newer CPM Deps =================
+CPMAddPackage(
+        NAME WolfSSL
+        GITHUB_REPOSITORY wolfSSL/wolfssl
+        GIT_TAG v5.3.0-stable # Latest WolfSSL Didn't built using CMake
+        OPTIONS
+        "WOLFSSL_OPENSSLEXTRA ON"
+        "BUILD_SHARED_LIBS OFF"
+        "WOLFSSL_EXAMPLES OFF"
+        "WOLFSSL_CRYPT_TESTS OFF"
+        "WOLFSSL_SP_MATH_ALL OFF" # SP Math doesn't build with CMake currently...
+)
+#if (WolfSSL_ADDED)
+#    set(WolfSSL_INCLUDE_DIR "${WolfSSL_SOURCE_DIR}/wolfssl")
+#    #target_include_directories(WolfSSL INTERFACE ${WolfSSL_INCLUDE_DIR})
+#    #target_include_directories(WolfSSL INTERFACE ${WolfSSL_INCLUDE_DIR})
+#endif() 
+
+#CPMAddPackage(
+#        NAME openssl-cmake
+#        GITHUB_REPOSITORY janbar/openssl-cmake
+#        GIT_TAG master
+#        OPTIONS
+#        "WITH_APPS OFF"
+#)
+#if (openssl-cmake_ADDED)
+#    set(OPENSSL_INCLUDE_DIR "${openssl-cmake_BINARY_DIR}/include")
+#    target_include_directories(ssl INTERFACE ${OPENSSL_INCLUDE_DIR})
+#    target_include_directories(crypto INTERFACE ${OPENSSL_INCLUDE_DIR})
+#endif() 
+if(NOT CMAKE_SYSTEM_NAME STREQUAL "Emscripten")
 CPMAddPackage(
         NAME curl
         VERSION 7.67.0
@@ -32,11 +62,17 @@ CPMAddPackage(
         "BUILD_SHARED_LIBS OFF"
         "HTTP_ONLY ON"
         "BUILD_TESTING OFF"
-        "CURL_ENABLE_SSL OFF"
+        "CURL_ENABLE_SSL ON"
+        "CURL_USE_WOLFSSL OFF"
+        "ZLIB_FOUND OFF"
+        "USE_ZLIB OFF"
         "CURL_USE_OPENSSL OFF"
         "CMAKE_USE_OPENSSL OFF"
+        "CURL_DISABLE_TESTS ON"
+        "WolfSSL_INCLUDE_DIRS" ${WolfSSL_INCLUDE_DIR}
+        "WolfSSL_LIBRARIES" WolfSSL
 ) 
-
+endif()
 CPMAddPackage(
   NAME nlohmann_json
   VERSION 3.11.2
@@ -124,15 +160,35 @@ else()
               log )
 
 # You need to link static libraries against your shared native library.
+# Web Configurations
+if (CMAKE_SYSTEM_NAME STREQUAL "Emscripten")
+    # Tell Emscripten to build an example.html file.
+    set_target_properties(${PROJECT_NAME} PROPERTIES SUFFIX ".html")
+    add_link_options("--preload-file ${CMAKE_SOURCE_DIR}/data")
+    add_link_options("-s USE_GLFW=3 -s ASYNCIFY -s USE_PTHREADS=1 -s EXPORTED_RUNTIME_METHODS=ccall  ")
+endif()
 target_link_libraries(ultrashooter ${log-lib} )
 endif()
 target_include_directories(ultrashooter PRIVATE ${ultrashooter_INCLUDE_DIRS})
 target_include_directories(ultrashooter PRIVATE ${enet_SOURCE_DIR}/include)
 target_link_libraries(ultrashooter raylib)
+if(NOT CMAKE_SYSTEM_NAME STREQUAL "Emscripten")
 target_link_libraries(ultrashooter enet)
-target_link_libraries(ultrashooter Threads::Threads)
+target_link_libraries(ultrashooter wolfssl)
 target_link_libraries(ultrashooter libcurl)
+endif()
+target_link_libraries(ultrashooter Threads::Threads)
 target_link_libraries(ultrashooter nlohmann_json)
+execute_process(
+  COMMAND git log -1 --format=%h
+  WORKING_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}
+  OUTPUT_VARIABLE GIT_HASH
+  OUTPUT_STRIP_TRAILING_WHITESPACE
+  )
+if(GIT_HASH)
+  target_compile_definitions(ultrashooter PUBLIC GITHASH=${GIT_HASH})
+endif()
+
 if(MINGW OR UNIX AND NOT CMAKE_SYSTEM_NAME STREQUAL "Emscripten" AND NOT CMAKE_SYSTEM_NAME STREQUAL "Android")
     target_link_options(ultrashooter PRIVATE -static-libgcc -static-libstdc++ -Wl,-Bstatic -lstdc++ -lpthread -Wl,-Bdynamic)
 endif()
@@ -147,12 +203,6 @@ file(COPY data DESTINATION .)
 #else()
 #    message(STATUS "IPO / LTO not supported: <${error}>")
 #endif()
-
-# Web Configurations
-if (CMAKE_SYSTEM_NAME STREQUAL "Emscripten")
-    # Tell Emscripten to build an example.html file.
-    set_target_properties(${PROJECT_NAME} PROPERTIES SUFFIX ".html")
-endif()
 
 # Checks if OSX and links appropriate frameworks (Only required on MacOS)
 if (APPLE)

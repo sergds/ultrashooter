@@ -2,7 +2,7 @@
 
 Enemy::Enemy()
 {
-	// Предзагруженные текстурки хихитлера
+	// РџСЂРµРґР·Р°РіСЂСѓР¶РµРЅРЅС‹Рµ С‚РµРєСЃС‚СѓСЂРєРё С…РёС…РёС‚Р»РµСЂР°
 	m_sprite = enemy;
 	m_sprite2 = enemy2;
 	m_origin = { (float)m_sprite.width / 2,(float)m_sprite.height / 2 };

@@ -8,7 +8,7 @@ void GameplayGameState::Init()
 	bg = LoadTexture("data/sprites/battlefield.png");
 	RegisterActor(new Player());
 	gameplaytimestamp = GetTime();
-	SetMusicVolume(game_music, 0.3);
+	SetMusicVolume(game_music, 0.2);
 	PlayMusicStream(game_music);
 }
 

@@ -3,22 +3,29 @@
 #define ENET_IMPLEMENTATION
 #include "Networking.h"
 #include <iostream>
+#if !defined(PLATFORM_WEB)
 #include "HTTP.h"
+#endif
 #include <string>
 
 int Networking::Init()
 {
+#if !defined(PLATFORM_WEB)
 	logger.Log("Initialized Networking.");
 	curl_global_init(CURL_GLOBAL_ALL); 
     logger.Log("http via cURL"); 
-    //logger.Log("LIBCURL VERSION: " + std::to_string(LIBCURL_VERSION));
+    logger.Log("LIBCURL VERSION: " + static_cast<std::string>(LIBCURL_VERSION));
 	HTTP http;
 	logger.Log("External IP: " + http.GET("http://ifconfig.me/ip"));
 	return enet_initialize();
+#else
+	return 0;
+#endif
 }
 
 void Networking::Host()
 {
+#if !defined(PLATFORM_WEB)
 	net_ticrate = NET_TICRATE;
 	logger.Log("Using Network TickRate of " + std::to_string(net_ticrate));
 	ENetAddress addr;
@@ -32,9 +39,11 @@ void Networking::Host()
 	authority = true;
 	logger.Log("Created a Host, and became an authority.");
 	return;
+#endif
 }
 
 void Networking::DestroyHost() {
+#if !defined(PLATFORM_WEB)
 	if (host != nullptr) {
 		enet_host_destroy(host);
 		host = nullptr;
@@ -44,10 +53,12 @@ void Networking::DestroyHost() {
 		net_ticrate = 33;
 		logger.Log("Using Network TickRate of " + std::to_string(net_ticrate));
 	}
+#endif
 }
 
 void Networking::Frame()
 {
+#if !defined(PLATFORM_WEB)
 	ENetEvent evt;
 	if (host == nullptr) {
 		return;
@@ -62,6 +73,7 @@ void Networking::Frame()
 			break;
 		}
 	}
+#endif
 }
 
 bool Networking::GetAuthority()
@@ -71,6 +83,7 @@ bool Networking::GetAuthority()
 
 bool Networking::Connect(std::string hostname)
 {
+#if !defined(PLATFORM_WEB)
 	net_ticrate = NET_TICRATE;
 	logger.Log("Using Network TickRate of " + std::to_string(net_ticrate));
 	host = enet_host_create(NULL /* create a client host */,
@@ -95,11 +108,13 @@ bool Networking::Connect(std::string hostname)
 			break;
 		}
 	}
+#endif
 	return false;
 }
 
 Networking::~Networking()
 {
+#if !defined(PLATFORM_WEB)
 	if (host != nullptr) {
 		enet_host_destroy(host);
 		logger.Log("Destroyed host.");
@@ -107,4 +122,5 @@ Networking::~Networking()
 	enet_deinitialize();
 	curl_global_cleanup();
 	logger.Log("Destroyed Networking.");
+#endif
 }
