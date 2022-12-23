@@ -1,5 +1,6 @@
 #include "StartGameState.h"
 #include "AlsoStartGameState.h"
+#include "Logger.h"
 #include "Networking.h"
 #include "globals.h"
 #include "raylib.h"
@@ -61,6 +62,9 @@ void StartGameState::Init()
 	m_binitialized = true;
 	Sound tink = LoadSound("data/tink.wav");
 	PlaySound(tink);
+	#ifdef GITHASH
+	logger.Log(TextFormat("GIT VERSION: %s", STRINGIFY(GITHASH)));
+	#endif
 }
 
 void StartGameState::Think()

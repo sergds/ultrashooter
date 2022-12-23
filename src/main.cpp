@@ -33,13 +33,13 @@ int WinMain(int argc,char* argv[]) {
 		if (IsKeyDown(KEY_LEFT_ALT) && IsKeyDown(KEY_ENTER)) {
 			if (!fullscreenfailsafe) {
 				ToggleFullscreen();
-				if(IsWindowFullscreen()){
+				/*if(IsWindowFullscreen()){
 					HideCursor();
 				}
 				else
 				{
 					ShowCursor();
-				}
+				}*/
 				fullscreenfailsafe = true;
 			}
 		}
@@ -59,6 +59,11 @@ int WinMain(int argc,char* argv[]) {
 			gs = new StartGameState;
 			gs->Init();
 		}
+		#ifdef PLATFORM_ANDROID
+		if(IsMouseButtonDown(MOUSE_LEFT_BUTTON)){
+			DrawCircleLines(GetMouseX(), GetMouseY(), 50, RED);
+		}
+		#endif
 	}
 	networking = false;
 	quitting = true;

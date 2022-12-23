@@ -4,6 +4,8 @@
 #include "ResourceSystem.h"
 #include "Networking.h"
 #include <thread>
+#include "GUI.h"
+#include "globals.h"
 
 void MainMenuGameState::Init()
 {
@@ -21,21 +23,26 @@ void MainMenuGameState::Think()
 {
 	UpdateMusicStream(menu_music);
 	//ClearBackground(BLACK);
+	if(leavingMenu){
+		SwitchGameState(new GameplayGameState);
+		return;
+	}
 	switch (multiplayer_stage)
 	{
 	case 0:
 		DrawTexture(bg, 0, 0, WHITE);
 		DrawTexture(logo, 300, 50, WHITE);
 		DrawText("Press [M] for online Multiplayer", 10, 10, 20, WHITE);
-		if ((int)round(GetTime()) % 2) {
-			DrawTexture(enter, 100, 300, WHITE);
-		}
-		if (IsKeyPressed(KEY_ENTER) && !IsKeyDown(KEY_LEFT_ALT)) {
+		//if ((int)round(GetTime()) % 2) {
+		//	DrawTexture(enter, 100, 300, WHITE);
+		//}
+		if ((IsKeyPressed(KEY_ENTER) || GUI::ButtonCenter( 240, 50, "МОЧИТЬ НЕМЦЕВ")) && !IsKeyDown(KEY_LEFT_ALT)) {
 			StopMusicStream(menu_music);
-			SwitchGameState(new GameplayGameState);
+			//SwitchGameState(new GameplayGameState);
+			leavingMenu = true;
 			return;
 		}
-		if (IsKeyPressed(KEY_M)) {
+		if (GUI::ButtonCenter(300, 50, "Мультиплеер")) {
 			multiplayer_stage = 1;
 			SetMusicVolume(menu_music, 0.3);
 		}
@@ -47,18 +54,19 @@ void MainMenuGameState::Think()
 		}
 		DrawTexture(bg, 0, 0, CLITERAL(Color){100, 100, 100, 255});
 		DrawText("Press [M] to go back", 10, 10, 20, WHITE);
-		DrawTextPro(DefaultFont, "Multiplayer!", CLITERAL(Vector2){800 / 2 - 125, (float)(600 / 4 + sin(GetTime()) * 4)}, CLITERAL(Vector2){50,0},sin(GetTime()*2), 50, 1, WHITE);
-		DrawText("Press [C] to connect", 800 / 2 - 150, 280, 20, WHITE);
-		DrawText("Press [H] to host", 800 / 2 - 150, 300, 20, WHITE);
-		if (IsKeyPressed(KEY_H)) {
+		GUI::WavyLabelCenter(100, "Мультиплеер");
+		//DrawText("Press [C] to connect", 800 / 2 - 150, 280, 20, WHITE);
+		//DrawText("Press [H] to host", 800 / 2 - 150, 300, 20, WHITE);
+		if (GUI::ButtonCenter(280, 50, "Создать Игру")) {
 			multiplayer_stage = 3;
 		}
-		if (IsKeyPressed(KEY_C)) {
+		if (GUI::ButtonCenter(340, 50, "Подключение")) {
 			multiplayer_stage = 2;
 		}
 		break;
 	case 2:
 		logger.Log("Unimplemented multiplayer menu action");
+		SetMusicVolume(menu_music, 1);
 		multiplayer_stage = 0;
 		break;
 	case 3:
@@ -71,11 +79,11 @@ void MainMenuGameState::Think()
 	case 4:
 		DrawText("Press [M] to return to the main menu", 10, 10, 20, WHITE);
 		DrawTexture(bg, 0, 0, CLITERAL(Color){100, 100, 100, 255});
-		DrawTextPro(DefaultFont, "Multiplayer Lobby!", CLITERAL(Vector2){800 / 2 - 125, (float)(600 / 4 + sin(GetTime()) * 4)}, CLITERAL(Vector2){50, 0}, sin(GetTime() * 2), 50, 1, WHITE);
+		GUI::WavyLabelCenter(100, "Лобби");
 		DrawText("Gamemode: Versus", 800 / 2 - 150, 280, 20, WHITE);
 		if(Networking::getInstance().GetAuthority())
 			DrawText("Waiting for player...", 800 / 2 - 150, 300, 20, WHITE);
-		if (IsKeyPressed(KEY_M)) {
+		if (IsKeyPressed(KEY_M) || GUI::ButtonCenter(470, 50.f, "Вернуться в меню")) {
 			multiplayer_stage = 0;
 			Networking::getInstance().DestroyHost();
 			SetMusicVolume(menu_music, 1);
@@ -88,7 +96,6 @@ void MainMenuGameState::Think()
 
 void MainMenuGameState::Destroy()
 {
-	StopMusicStream(menu_music);
 	UnloadMusicStream(menu_music);
 	UnloadTexture(bg);
 	UnloadTexture(enter);

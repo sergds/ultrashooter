@@ -6,6 +6,7 @@
 #include <nlohmann/json.hpp>
 #include <fstream>
 #include <ios>
+#include "GUI.h"
 using json = nlohmann::json;
 
 void EndGameState::Init()
@@ -37,18 +38,18 @@ void EndGameState::Think()
 {
 	UpdateMusicStream(endt_music);
 	ClearBackground(BLACK);
-	if (IsKeyPressed(KEY_R)) {
+	if (GUI::ButtonCenter(470, 40, "В Меню")) {
 		SwitchGameState(new MainMenuGameState());
 	}
 	if(frames < 661){
 		DrawTextEx(DefaultFont, "GAME OVER", CLITERAL(Vector2){(float)800 / 2 - 150, (float)600 / 2 - 100}, 50, 1, WHITE);
 		DrawTextEx(DefaultFont,TextFormat("Final Score: %i", globalscore), CLITERAL(Vector2) { (float)800 / 2 - 200, (float)600 / 2 }, 50, 1, WHITE);
 		DrawTextEx(DefaultFont,TextFormat("High Score: %i", topscore), CLITERAL(Vector2) { (float)800 / 2 - 200, (float)600 / 2 + 100}, 50, 1, WHITE);
-		DrawTextEx(DefaultFont, TextFormat("Press [R] to return to the Main Menu"), CLITERAL(Vector2) { 0, (float)600 - 50 }, 25, 1, WHITE);
+		//DrawTextEx(DefaultFont, TextFormat("Press [R] to return to the Main Menu"), CLITERAL(Vector2) { 0, (float)600 - 50 }, 25, 1, WHITE);
 	} else {
 		DrawTextEx(DefaultFont, "GLOBAL SCOREBOARD", CLITERAL(Vector2){(float)800 / 2 - 210, (float)600 / 2 - 200}, 50, 1, WHITE);
 		DrawTextEx(DefaultFont, "Work In Progress ;)", CLITERAL(Vector2){(float)800 / 2 - 210, (float)600 / 2}, 50, 1, WHITE);
-		DrawTextEx(DefaultFont, TextFormat("Press [R] to return to the Main Menu"), CLITERAL(Vector2) { 0, (float)600 - 50 }, 25, 1, WHITE);
+		//DrawTextEx(DefaultFont, TextFormat("Press [R] to return to the Main Menu"), CLITERAL(Vector2) { 0, (float)600 - 50 }, 25, 1, WHITE);
 	}
 	++frames;
 }

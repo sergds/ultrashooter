@@ -147,6 +147,8 @@ endforeach()
 list (REMOVE_DUPLICATES ultrashooter_INCLUDE_DIRS)
 
 if(NOT CMAKE_SYSTEM_NAME STREQUAL "Android")
+  add_compile_options("-ffunction-sections -funwind-tables -fstack-protector-strong -fPIC -DANDROID -DPLATFORM_ANDROID -D__ANDROID_API__=29")
+  add_link_options("-Wall -Wa,--noexecstack -Wformat -Werror=format-security -no-canonical-prefixes")
   add_executable(ultrashooter WIN32 ${ultrashooter_SOURCES} ultrashooter.rc)
 else()
   set_source_files_properties(${ANDROID_NDK}/sources/android/native_app_glue/android_native_app_glue.c PROPERTIES LANGUAGE C)
@@ -159,6 +161,7 @@ else()
               # CMake needs to locate.
               log )
 
+endif()
 # You need to link static libraries against your shared native library.
 # Web Configurations
 if (CMAKE_SYSTEM_NAME STREQUAL "Emscripten")
@@ -168,7 +171,6 @@ if (CMAKE_SYSTEM_NAME STREQUAL "Emscripten")
     add_link_options("-s USE_GLFW=3 -s ASYNCIFY -s USE_PTHREADS=1 -s EXPORTED_RUNTIME_METHODS=ccall  ")
 endif()
 target_link_libraries(ultrashooter ${log-lib} )
-endif()
 target_include_directories(ultrashooter PRIVATE ${ultrashooter_INCLUDE_DIRS})
 target_include_directories(ultrashooter PRIVATE ${enet_SOURCE_DIR}/include)
 target_link_libraries(ultrashooter raylib)
@@ -180,7 +182,7 @@ endif()
 target_link_libraries(ultrashooter Threads::Threads)
 target_link_libraries(ultrashooter nlohmann_json)
 execute_process(
-  COMMAND git log -1 --format=%h
+  COMMAND git rev-parse --short HEAD
   WORKING_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}
   OUTPUT_VARIABLE GIT_HASH
   OUTPUT_STRIP_TRAILING_WHITESPACE
