@@ -147,10 +147,10 @@ endforeach()
 list (REMOVE_DUPLICATES ultrashooter_INCLUDE_DIRS)
 
 if(NOT CMAKE_SYSTEM_NAME STREQUAL "Android")
-  add_compile_options("-ffunction-sections -funwind-tables -fstack-protector-strong -fPIC -DANDROID -DPLATFORM_ANDROID -D__ANDROID_API__=29")
-  add_link_options("-Wall -Wa,--noexecstack -Wformat -Werror=format-security -no-canonical-prefixes")
   add_executable(ultrashooter WIN32 ${ultrashooter_SOURCES} ultrashooter.rc)
 else()
+  add_compile_options("-DANDROID -DPLATFORM_ANDROID -D__ANDROID_API__=29")
+  add_link_options("-Wall -Wa,--noexecstack -Wformat -Werror=format-security -no-canonical-prefixes")
   set_source_files_properties(${ANDROID_NDK}/sources/android/native_app_glue/android_native_app_glue.c PROPERTIES LANGUAGE C)
   add_library(ultrashooter SHARED ${ultrashooter_SOURCES} ${ANDROID_NDK}/sources/android/native_app_glue/android_native_app_glue.c)
   find_library( # Defines the name of the path variable that stores the
