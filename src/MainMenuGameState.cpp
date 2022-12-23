@@ -32,7 +32,7 @@ void MainMenuGameState::Think()
 	case 0:
 		DrawTexture(bg, 0, 0, WHITE);
 		DrawTexture(logo, 300, 50, WHITE);
-		DrawText("Press [M] for online Multiplayer", 10, 10, 20, WHITE);
+		//DrawText("Press [M] for online Multiplayer", 10, 10, 20, WHITE);
 		//if ((int)round(GetTime()) % 2) {
 		//	DrawTexture(enter, 100, 300, WHITE);
 		//}
