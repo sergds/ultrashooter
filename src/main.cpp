@@ -22,7 +22,7 @@ int WinMain(int argc,char* argv[]) {
 	InitWindow(800, 600, "Ultra Shooter!");
 	InitAudioDevice();
 #ifdef __ANDROID__ 
-	ToggleFullscreen();
+	//ToggleFullscreen();
 #endif
 	logger.Log("=========== New Log ==============");
 	SetTargetFPS(60);

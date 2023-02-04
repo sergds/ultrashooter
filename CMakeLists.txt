@@ -63,7 +63,7 @@ CPMAddPackage(
         "HTTP_ONLY ON"
         "BUILD_TESTING OFF"
         "CURL_ENABLE_SSL ON"
-        "CURL_USE_WOLFSSL OFF"
+        "CURL_USE_WOLFSSL ON"
         "ZLIB_FOUND OFF"
         "USE_ZLIB OFF"
         "CURL_USE_OPENSSL OFF"
@@ -136,6 +136,7 @@ if (NOT enet_FOUND) # If there's none, fetch and build enet
   endif()
 endif()
 
+
 file (GLOB_RECURSE ultrashooter_SOURCES CONFIGURE_DEPENDS "src/*.cpp")
 file (GLOB_RECURSE ultrashooter_HEADERS CONFIGURE_DEPENDS "src/*.h")
 
@@ -163,13 +164,6 @@ else()
 
 endif()
 # You need to link static libraries against your shared native library.
-# Web Configurations
-if (CMAKE_SYSTEM_NAME STREQUAL "Emscripten")
-    # Tell Emscripten to build an example.html file.
-    set_target_properties(${PROJECT_NAME} PROPERTIES SUFFIX ".html")
-    add_link_options("--preload-file ${CMAKE_SOURCE_DIR}/data")
-    add_link_options("-s USE_GLFW=3 -s ASYNCIFY -s USE_PTHREADS=1 -s EXPORTED_RUNTIME_METHODS=ccall  ")
-endif()
 target_link_libraries(ultrashooter ${log-lib} )
 target_include_directories(ultrashooter PRIVATE ${ultrashooter_INCLUDE_DIRS})
 target_include_directories(ultrashooter PRIVATE ${enet_SOURCE_DIR}/include)
@@ -198,6 +192,23 @@ if(WIN32)
   target_link_libraries(ultrashooter winmm ws2_32)
 endif()
 file(COPY data DESTINATION .)
+
+# Web Configurations
+if (CMAKE_SYSTEM_NAME STREQUAL "Emscripten")
+    # Tell Emscripten to build an example.html file.
+    set_target_properties(ultrashooter PROPERTIES SUFFIX ".html")
+    target_compile_options(ultrashooter PRIVATE "SHELL:--preload-file ${CMAKE_BINARY_DIR}/data" "SHELL:-s USE_GLFW=3" "SHELL:-s ASYNCIFY" "SHELL:-s WASM=1" "SHELL:-s USE_PTHREADS=1" "SHELL:-s EXPORTED_RUNTIME_METHODS=ccall")
+    target_link_options(ultrashooter PRIVATE "SHELL:--preload-file ${CMAKE_BINARY_DIR}/data" "SHELL:-s USE_GLFW=3" "SHELL:-s ASYNCIFY" "SHELL:-s WASM=1" "SHELL:-s USE_PTHREADS=1" "SHELL:-s EXPORTED_RUNTIME_METHODS=ccall")
+    target_compile_options(raylib PRIVATE "SHELL:--preload-file ${CMAKE_BINARY_DIR}/data" "SHELL:-s USE_GLFW=3" "SHELL:-s ASYNCIFY" "SHELL:-s WASM=1" "SHELL:-s USE_PTHREADS=1" "SHELL:-s EXPORTED_RUNTIME_METHODS=ccall")
+    #target_link_options(ultrashooter PRIVATE -s ASYNCIFY)
+    #target_link_options(ultrashooter PRIVATE -s USE_PTHREADS=1)
+    #target_link_options(ultrashooter PRIVATE -s EXPORTED_RUNTIME_METHODS=ccall)
+    #add_link_options("--preload-file ${CMAKE_SOURCE_DIR}/data")
+    #add_link_options("-s ASYNCIFY")
+    #add_link_options("-s USE_PTHREADS=1")
+    #add_link_options("-s EXPORTED_RUNTIME_METHODS=ccall")
+    #add_compile_options("-s USE_GLFW=3 -s ASYNCIFY -s USE_PTHREADS=1 -s EXPORTED_RUNTIME_METHODS=ccall")
+endif()
 
 #if( supported )
     #message(STATUS "IPO / LTO enabled")
