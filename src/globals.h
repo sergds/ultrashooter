@@ -44,3 +44,5 @@ const int MAX_ENEMY_SPEED = 13;
 extern float net_ticrate;
 #define STRINGIFY2(arg) #arg
 #define STRINGIFY(arg) STRINGIFY2(arg)
+
+#define US_NETWORKING_ENABLED 0

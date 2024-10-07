@@ -1,5 +1,5 @@
 #include "HTTP.h"
-#if !defined(PLATFORM_WEB)
+#if US_NETWORKING_ENABLED
 #include "curl/curl.h"
 #include "curl/easy.h"
 #endif
@@ -17,7 +17,7 @@ HTTP::HTTP() {
 }
 
 std::string HTTP::GET(std::string url) {
-#if !defined(PLATFORM_WEB)
+#if US_NETWORKING_ENABLED
     std::string readBuffer;
     curl = curl_easy_init();
     curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
@@ -33,7 +33,7 @@ std::string HTTP::GET(std::string url) {
     readBuffer = "CURL ERROR";
     return readBuffer;
 #else
-    return "NETWORKING DISABLED ON WEB BUILD!!!";
+    return "NETWORKING DISABLED";
 #endif
 }
 

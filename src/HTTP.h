@@ -1,5 +1,5 @@
 #include "fix_winapi_conflicts.h"
-#if !defined(PLATFORM_WEB)
+#if US_NETWORKING_ENABLED
 #include "curl/curl.h"
 #endif
 #include <string>
@@ -10,7 +10,7 @@ public:
     ~HTTP();
     std::string GET(std::string url);
 private:
-#if !defined(PLATFORM_WEB)
+#if US_NETWORKING_ENABLED
     CURL* curl;
     CURLcode curlerr;
 #endif

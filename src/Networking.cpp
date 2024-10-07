@@ -3,14 +3,14 @@
 #define ENET_IMPLEMENTATION
 #include "Networking.h"
 #include <iostream>
-#if !defined(PLATFORM_WEB)
+#if US_NETWORKING_ENABLED
 #include "HTTP.h"
 #endif
 #include <string>
 
 int Networking::Init()
 {
-#if !defined(PLATFORM_WEB)
+#if US_NETWORKING_ENABLED
 	logger.Log("Initialized Networking.");
 	curl_global_init(CURL_GLOBAL_ALL); 
     logger.Log("http via cURL"); 
@@ -25,7 +25,7 @@ int Networking::Init()
 
 void Networking::Host()
 {
-#if !defined(PLATFORM_WEB)
+#if US_NETWORKING_ENABLED
 	net_ticrate = NET_TICRATE;
 	logger.Log("Using Network TickRate of " + std::to_string(net_ticrate));
 	ENetAddress addr;
@@ -43,7 +43,7 @@ void Networking::Host()
 }
 
 void Networking::DestroyHost() {
-#if !defined(PLATFORM_WEB)
+#if US_NETWORKING_ENABLED
 	if (host != nullptr) {
 		enet_host_destroy(host);
 		host = nullptr;
@@ -58,7 +58,7 @@ void Networking::DestroyHost() {
 
 void Networking::Frame()
 {
-#if !defined(PLATFORM_WEB)
+#if US_NETWORKING_ENABLED
 	ENetEvent evt;
 	if (host == nullptr) {
 		return;
@@ -83,7 +83,7 @@ bool Networking::GetAuthority()
 
 bool Networking::Connect(std::string hostname)
 {
-#if !defined(PLATFORM_WEB)
+#if US_NETWORKING_ENABLED
 	net_ticrate = NET_TICRATE;
 	logger.Log("Using Network TickRate of " + std::to_string(net_ticrate));
 	host = enet_host_create(NULL /* create a client host */,
@@ -114,7 +114,7 @@ bool Networking::Connect(std::string hostname)
 
 Networking::~Networking()
 {
-#if !defined(PLATFORM_WEB)
+#if US_NETWORKING_ENABLED
 	if (host != nullptr) {
 		enet_host_destroy(host);
 		logger.Log("Destroyed host.");

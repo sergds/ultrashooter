@@ -367,3 +367,15 @@ android.ultrashooter
 ultrashooter_log.txt
 *_build
 embuild
+
+# Xmake cache
+.xmake/
+build/
+
+# MacOS Cache
+.DS_Store
+
+# Ultra Shooter
+ultrashooter_log.txt
+*.usud
+compile_commands.json

@@ -36,13 +36,13 @@ float Enemy::GetRotation()
 void Enemy::Die()
 {
 	if (GetRandomValue(0, 1) == 0) {
-		PlaySoundMulti(death1);
+		PlaySound(death1);
 	}
 	else {
-		PlaySoundMulti(death2);
+		PlaySound(death2);
 	}
 	if (GetRandomValue(0, 100) >= 90) {
-		PlaySoundMulti(sc);
+		PlaySound(sc);
 	}
 }
 
@@ -62,10 +62,10 @@ void Enemy::Think()
 			m_talk = true;
 			if (GetRandomValue(0, 100) >= 85) {
 				if (GetRandomValue(0, 1) == 0) {
-					PlaySoundMulti(speak2);
+					PlaySound(speak2);
 				}
 				else {
-					PlaySoundMulti(speak1);
+					PlaySound(speak1);
 				}
 			}
 		}

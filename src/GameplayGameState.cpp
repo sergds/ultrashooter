@@ -53,7 +53,7 @@ void GameplayGameState::Think()
 			rt = LoadRenderTexture(800, 600);
 			StopMusicStream(game_music);
 			oops = LoadSound("data/scratch.wav");
-			PlaySoundMulti(oops);
+			PlaySound(oops);
 			freezeframe = true;
 		}
 		if (prosranotics == 1000) {
@@ -88,13 +88,13 @@ void GameplayGameState::Think()
 		}
 		if(prosranoradius < 0 && !IsSoundPlaying(oops) && prosranoradius > -1000){
 			oops = LoadSound("data/hihitler_sounds/speak2.wav");
-			PlaySoundMulti(oops);
+			PlaySound(oops);
 			prosranoradius = -1000;
 		}
 
 		if (prosranotics > 1200) {
 			freezeframe = false;
-			StopSoundMulti();
+			//StopSoundMulti();
 			UnloadSound(oops);
 			UnloadRenderTexture(rt);
 			SwitchGameState(new EndGameState());
@@ -136,7 +136,7 @@ void GameplayGameState::Destroy()
 	pending_actors.clear();
 	dereg_pending_actors.clear();
 	globalscore = score;
-	StopSoundMulti();
+	//StopSoundMulti();
 	StopMusicStream(game_music);
 	UnloadMusicStream(game_music);
 	UnloadTexture(bg);

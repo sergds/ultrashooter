@@ -5,19 +5,14 @@
 
 Зависимости:
 - Raylib (Графика, звук, ввод в одной компактной библиотеке)
-- ENet (Мультиплеер)
-- libcurl (HTTP)
-- WolfSSL (Поддержка TLS в libcurl)
 
 Все зависимости автоматически загружаются, собираются и линкуются в итоговый EXE при сборке проекта!
 
 Под виндой собирать через MinGW, сборка через MSVC не тестируется и не поддерживается!
 
-### Сборка в типичной UNIX-like системе или в Windows(MinGW) через Ninja
+### Сборка в типичной UNIX-like системе или в Windows(MinGW) через xmake
 ```bash
-mkdir build && cd build
-cmake .. -G "Ninja"
-ninja -j8
+xmake
 # Всё! Можно Играть!
-./ultrashooter
+./build/linux/x86_64/release/ultrashooter
 ```

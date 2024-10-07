@@ -19,6 +19,7 @@ int WinMain(int argc,char* argv[]) {
 		return 1;
 	}
 #endif
+	SetTraceLogLevel(LOG_ERROR);
 	InitWindow(800, 600, "Ultra Shooter!");
 	InitAudioDevice();
 #ifdef __ANDROID__ 

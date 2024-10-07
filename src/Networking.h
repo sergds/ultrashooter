@@ -2,7 +2,8 @@
 #include <cstdint>
 #include <string>
 #include "fix_winapi_conflicts.h"
-#if !defined(PLATFORM_WEB)
+#include "globals.h"
+#if US_NETWORKING_ENABLED
 #define ENET_IMPLEMENTATION
 #include <enet/enet.h>
 #endif
@@ -31,7 +32,7 @@ public:
    };
 private:
     bool authority = false; // Set to true if this machine is the host.
-#if !defined(PLATFORM_WEB)
+#if US_NETWORKING_ENABLED
     ENetPeer* otherPeer;
     ENetHost* host;
 #endif

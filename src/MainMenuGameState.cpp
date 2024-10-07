@@ -1,7 +1,6 @@
 #include "MainMenuGameState.h"
 #include "GameplayGameState.h"
 #include "Logger.h"
-#include "ResourceSystem.h"
 #include "Networking.h"
 #include <thread>
 #include "GUI.h"
