@@ -50,7 +50,7 @@ int WinMain(int argc,char* argv[]) {
 		BeginDrawing();
 		if (gs == nullptr) {
 			ClearBackground(BLACK);
-			DrawText("Loading...", 0, 0, 20, (Color){ 0,255,0,255 });
+			DrawText("Loading...", 0, 0, 20, CLITERAL(Color){ 0,255,0,255 });
 		}
 		if (gs != nullptr)
 			gs->Think();

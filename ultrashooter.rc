@@ -1,6 +1,6 @@
 // Microsoft Visual C++ generated resource script.
 //
-#include "resource.h"
+#include "src/resource.h"
 
 #define APSTUDIO_READONLY_SYMBOLS
 /////////////////////////////////////////////////////////////////////////////
@@ -69,12 +69,12 @@ BEGIN
         BEGIN
             VALUE "CompanyName", "SergDS "
             VALUE "FileDescription", "Супер игра для уроков инфы!"
-            VALUE "FileVersion", "1.0.0.1"
+            VALUE "FileVersion", "1.5.0.1"
             VALUE "InternalName", "ultrashooter.exe"
             VALUE "LegalCopyright", "SergDS (C) 2022"
             VALUE "OriginalFilename", "ultrashooter.exe"
             VALUE "ProductName", "Ultra Shooter"
-            VALUE "ProductVersion", "1.0.0.1"
+            VALUE "ProductVersion", "1.5.0.1"
         END
     END
     BLOCK "VarFileInfo"

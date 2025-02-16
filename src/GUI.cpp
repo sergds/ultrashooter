@@ -26,7 +26,7 @@ namespace GUI {
             DrawRectangleRounded(rec, 1, 10, DARKBROWN);
         }
         
-        DrawTextEx(DefaultFont, label.c_str(), (Vector2){rec.x+4, rec.y+2}, fontsize, 1, WHITE);
+        DrawTextEx(DefaultFont, label.c_str(), CLITERAL(Vector2){rec.x+4, rec.y+2}, fontsize, 1, WHITE);
         return false;
     }
     // Рисовать кнопку в центре оси X
@@ -50,7 +50,7 @@ namespace GUI {
         } else {
             DrawRectangleRounded(rec, 1, 10, DARKBROWN);
         }
-        DrawTextEx(DefaultFont, label.c_str(), (Vector2){rec.x+4, rec.y+2}, fontsize, 1, WHITE);
+        DrawTextEx(DefaultFont, label.c_str(), CLITERAL(Vector2){rec.x+4, rec.y+2}, fontsize, 1, WHITE);
         return false;
     }
     void WavyLabelCenter(float y, std::string text) {
